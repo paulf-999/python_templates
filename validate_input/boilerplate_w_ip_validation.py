@@ -2,7 +2,7 @@
 """
 Python Version  : 3.7
 * Name          : boilerplate_w_ip_validation.py
-* Description   : Description here
+* Description   : Boilerplate python script, for basic ip validation
 * Created       : 26-02-2021
 * Usage         : python3 boilerplate_w_ip_validation.py
 """

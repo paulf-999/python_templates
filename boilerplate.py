@@ -2,7 +2,7 @@
 """
 Python Version  : 3.7
 * Name          : boilerplate.py
-* Description   : Description here
+* Description   : Boilerplate python script
 * Created       : 26-02-2021
 * Usage         : python3 boilerplate.py
 """
