@@ -37,6 +37,7 @@ current_time_str = current_dt_obj.strftime('%H:%M:%S')
 ssl._create_default_https_context = ssl._create_unverified_context
 
 webhook_url=""
+#e.g. webhook_url="services/ABCDEFGHIJK/1aBCd0efG..."
 
 def main():
     """ Main entry point of the app """
@@ -48,7 +49,7 @@ def main():
 
     return
 
-def send_message_to_slack(text):
+def send_message_to_slack(text):    
     """ Function to post a message to a Slack channel """
     START_TIME = time()
     logger.debug(f"Function called: send_message_to_slack()")
