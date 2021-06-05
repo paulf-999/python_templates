@@ -2,7 +2,7 @@
 """
 Python Version  : 3.7
 * Name          : slack.py
-* Description   : Boilerplate slack API call script
+* Description   : Boilerplate slack API call script. Follows description given here: https://www.accadius.com/send-message-slack-python-program/#:~:text=Go%20to%20https%3A%2F%2Fmy,will%20appear%20in%20the%20channel
 * Created       : 26-02-2021
 * Usage         : python3 slack.py
 """
@@ -36,7 +36,7 @@ current_time_str = current_dt_obj.strftime('%H:%M:%S')
 #to use unverified ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
-webhook_url=""
+webhook_url="services/T020PC8CWBD/B020LK2NCUV/9fYTa0bxEjaI8C6PhHzFnvJh"
 #e.g. webhook_url="services/ABCDEFGHIJK/1aBCd0efG..."
 
 def main():
