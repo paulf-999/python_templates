@@ -1,0 +1,26 @@
+name: python_linting
+on:
+  # Trigger the workflow on push requests,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  pyflakes-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7.x"
+      - name: Install pyflakes
+        run: pip3 install pyflakes
+      - name: Run pyflakes against boilerplate scripts
+        run: pyflakes boilerplates/
+      - name: Run pyflakes against data-related scripts
+        run: pyflakes data_related/
+      - name: Run pyflakes against 'other' scripts
+        run: pyflakes other/
