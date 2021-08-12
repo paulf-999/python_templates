@@ -11,7 +11,8 @@ __author__ = "Paul Fry"
 __version__ = "0.1"
 
 import os
-import sys
+
+# import sys
 from datetime import datetime
 from time import time
 import logging
@@ -33,7 +34,7 @@ current_time_str = current_dt_obj.strftime("%H:%M:%S")
 
 
 def main():
-    """ Main entry point of the app """
+    """Main entry point of the app"""
     START_TIME = time()
     logger.debug("Function called: main()")
     # program logic here
@@ -43,7 +44,7 @@ def main():
 
 
 def function_template():
-    """ Description here """
+    """Description here"""
     START_TIME = time()
     logger.debug("Function called: function_template()")
     # program logic here
@@ -53,6 +54,6 @@ def function_template():
 
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
+    """This is executed when run from the command line"""
 
     main()

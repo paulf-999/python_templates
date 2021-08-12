@@ -33,17 +33,17 @@ current_time_str = current_dt_obj.strftime("%H:%M:%S")
 
 
 def main():
-    """ Main entry point of the app """
+    """Main entry point of the app"""
     START_TIME = time()
-    logger.debug(f"Function called: main()")
+    logger.debug("Function called: main()")
     # program logic here
     logger.debug(f"Function finished: main() finished in {round(time() - START_TIME, 2)} seconds")
 
 
 def function_template():
-    """ Description here """
+    """Description here"""
     START_TIME = time()
-    logger.debug(f"Function called: function_template()")
+    logger.debug("Function called: function_template()")
     # program logic here
     logger.debug(f"Function finished: function_template() finished in {round(time() - START_TIME, 2)} seconds")
 
@@ -51,7 +51,7 @@ def function_template():
 
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
+    """This is executed when run from the command line"""
 
     # validate user input
     if len(sys.argv) < 2:
