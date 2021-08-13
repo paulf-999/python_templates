@@ -11,8 +11,6 @@ https://home.openweathermap.org/api_keys
 """
 
 import os
-import sys
-from datetime import datetime
 from time import time
 import logging
 import requests
