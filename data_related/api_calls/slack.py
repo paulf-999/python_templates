@@ -12,13 +12,12 @@ __author__ = "Paul Fry"
 __version__ = "0.1"
 
 import os
-import sys
 from datetime import datetime
 from time import time
 import logging
 
 # import custom modules
-from urllib import request, parse
+from urllib import request
 import json
 import ssl
 
