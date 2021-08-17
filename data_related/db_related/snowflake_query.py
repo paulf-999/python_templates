@@ -87,9 +87,9 @@ def get_conn_params():
 
 if __name__ == "__main__":
 
-    snowflake_db = "bikestores_raw_db"
-    schema_name = "production"
+    snowflake_db = "<SNOWFLAKE_DB>"  # e.g. "bikestores_raw_db"
+    schema_name = "<SNOWFLAKE_DB_SCHEMA>"  # e.g. "production"
     # example Snowflake query
-    sql_query = "SHOW TABLES"
+    sql_query = "<SQL_QUERY>"  # e.g. "SHOW TABLES"
 
     snowflake_query(snowflake_db, schema_name, sql_query)
