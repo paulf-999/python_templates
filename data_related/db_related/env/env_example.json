@@ -1,0 +1,6 @@
+{
+    "snowflake_account": "<SNOWFLAKE_ACCOUNT>",
+    "sf_username" : "<USERNAME>",
+    "sf_password" : "<PASSWORD>",
+    "snowflake_wh" : "<SNOWFLAKE_WH>"
+}

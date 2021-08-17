@@ -10,25 +10,40 @@ Python Version  : 3.7
 __author__ = "Paul Fry"
 __version__ = "0.1"
 
-import sys
+import os
 import snowflake.connector
+from time import time
+import logging
+import json
+
+working_dir = os.getcwd()
+# Set up a specific logger with our desired output level
+logging.basicConfig(format="%(message)s")
+logger = logging.getLogger("application_logger")
+logger.setLevel(logging.INFO)
+# by default, turn off log outputs. But if desired, change this arg to True
+logger.propagate = True
 
 
-def snowflake_query(schema_name, ip_tbl):
-    """[summary]
+def snowflake_query(snowflake_db, schema_name, sql_query):
+    """Boilerplate Snowflake DB query
 
     Args:
-        schema_name ([type]): [description]
-        ip_tbl ([type]): [description]
+        snowflake_db (str): Snowflake DB to use
+        schema_name (str): Snowflake DB schema to use
+        sql_query (str): SQL query string to execute
     """
+    START_TIME = time()
+    logger.debug("Function called: snowflake_query()")
+
     conn_params = get_conn_params()
 
-    snowflake_account, username, password, snowflake_wh, snowflake_db, schema_name = [conn_params[i] for i in (0, 1, 2, 3, 4, 5)]
+    snowflake_account, username, password, snowflake_wh = [conn_params[i] for i in (0, 1, 2, 3)]
 
     conn = snowflake.connector.connect(user=f"{username}", password=f"{password}", account=f"{snowflake_account}", warehouse=f"{snowflake_wh}", database=f"{snowflake_db}", schema=f"{schema_name}")
     cursor = conn.cursor()
     try:
-        cursor.execute(f"select count(*) from {schema_name}.{ip_tbl}")
+        cursor.execute(sql_query)
         query_result = cursor.fetchall()
 
         for result in query_result:
@@ -39,29 +54,42 @@ def snowflake_query(schema_name, ip_tbl):
 
     conn.close()
 
+    logger.info(f"Function finished: snowflake_query() finished in {round(time() - START_TIME, 2)} seconds")
+
+    return
+
 
 def get_conn_params():
-    """Function to retrieve connection parameters used to connect to Snowflake
+    """Function to retrieve connection parameters to be used to connect to Snowflake
 
     Returns:
         conn_params (array): Array containing connection parameters
     """
+    START_TIME = time()
+    logger.debug("Function called: get_conn_params()")
 
-    snowflake_account = "<snowflake_account>"
-    username = "<username>"
-    password = "<password>"
-    snowflake_wh = "<wh_name>"
-    snowflake_db = "<db_name>"
-    schema_name = "<schema_name>"
+    with open(os.path.join(working_dir, "env/env.json"), "r") as ip_file:
+        ip_dict_args = json.load(ip_file)
 
-    conn_params = [snowflake_account, username, password, snowflake_wh, snowflake_db, schema_name]
+    snowflake_account = ip_dict_args["snowflake_account"]
+    username = ip_dict_args["sf_username"]
+    password = ip_dict_args["sf_password"]
+    snowflake_wh = ip_dict_args["snowflake_wh"]
+
+    conn_params = [snowflake_account, username, password, snowflake_wh]
+
+    logger.debug(conn_params)
+
+    logger.info(f"Function finished: snowflake_query() finished in {round(time() - START_TIME, 2)} seconds")
 
     return conn_params
 
 
 if __name__ == "__main__":
 
-    schema_name = sys.argv[1]
-    ip_tbl = sys.argv[1]
+    snowflake_db = "bikestores_raw_db"
+    schema_name = "production"
+    # example Snowflake query
+    sql_query = "SHOW TABLES"
 
-    snowflake_query(schema_name, ip_tbl)
+    snowflake_query(snowflake_db, schema_name, sql_query)
