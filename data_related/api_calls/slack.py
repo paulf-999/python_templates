@@ -37,7 +37,7 @@ current_time_str = current_dt_obj.strftime("%H:%M:%S")
 # to use unverified ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
-webhook_url = "services/T020PC8CWBD/B020LK2NCUV/9fYTa0bxEjaI8C6PhHzFnvJh"
+webhook_url = "slack_webhook_url"
 # e.g. webhook_url="services/ABCDEFGHIJK/1aBCd0efG..."
 
 
