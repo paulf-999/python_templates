@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Python Version  : 3.7
+Python Version  : 3.8
 * Name          : boilerplate_w_ip_validation.py
 * Description   : Boilerplate python script, for basic ip validation
 * Created       : 26-02-2021

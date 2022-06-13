@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Python Version  : 3.7
+Python Version  : 3.8
 * Name          : boilerplate.py
 * Description   : Boilerplate python script
 * Created       : 26-02-2021
@@ -24,13 +24,13 @@ working_dir = os.getcwd()
 logging.basicConfig(format="%(message)s")
 logger = logging.getLogger("application_logger")
 logger.setLevel(logging.INFO)
-# by default, turn off log outputs. But if desired, change this arg to True
+# By default, turn off log outputs. But if desired, change this arg to True
 # logger.propagate = False
 
 current_dt_obj = datetime.now()
+# Can use 'current_dt_obj' to get other date parts. E.g. 'current_dt_obj.year'
 current_date_str = current_dt_obj.strftime("%d-%m-%Y")
 current_time_str = current_dt_obj.strftime("%H:%M:%S")
-# can use 'current_dt_obj' to get other date parts. E.g. 'current_dt_obj.year'
 
 
 def main():

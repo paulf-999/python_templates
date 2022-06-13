@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Python Version  : 3.7
+Python Version  : 3.8
 * Name          : openweather.py
 * Description   : Script to perform an API call to gain open weather data
 * Created       : 26-02-2021

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Python Version  : 3.7
+Python Version  : 3.8
 * Name          : slack.py
 * Description   : Boilerplate slack API call script.Follows description given here:
                 https://www.accadius.com/send-message-slack-python-program/#:~:text=Go%20to%20https%3A%2F%2Fmy,will%20appear%20in%20the%20channel

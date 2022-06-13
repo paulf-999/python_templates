@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Python Version  : 3.7
+Python Version  : 3.8
 * Name          : jinja.py
 * Description   : Demo jinja template script
 * Created       : 14-07-2021
@@ -16,7 +16,7 @@ from jinja2 import Environment, FileSystemLoader
 working_dir = os.getcwd()
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
+    """This is executed when run from the command line"""
 
     template_dir = os.path.join(working_dir, "templates")
     jinja_env = Environment(loader=FileSystemLoader(template_dir), autoescape=True)

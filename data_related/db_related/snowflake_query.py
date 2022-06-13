@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Python Version  : 3.7
+Python Version  : 3.8
 * Name          : snowflake_query.py
 * Description   : Boilerplate Snowflake query script.
 * Created       : 04-06-2021
