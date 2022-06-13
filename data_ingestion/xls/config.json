@@ -1,0 +1,6 @@
+{
+    "Parameters" : {
+        "src_xls_col_names" : "[Col1, Col2]",
+	    "target_xls_col_names" : "['target_eg1', 'target_eg2']"
+    }
+}

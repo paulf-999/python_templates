@@ -45,7 +45,7 @@ def main():
 
 
 def read_ip():
-    """Description here"""
+    """Read input from config file"""
     START_TIME = time()
     logger.debug("Function called: read_ip()")
 
