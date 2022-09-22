@@ -37,9 +37,11 @@ def main():
     """Main entry point of the app"""
     START_TIME = time()
     logger.debug("Function called: main()")
-    # program logic here
-    logger.debug(f"Function finished: main() finished in {round(time() - START_TIME, 2)} seconds")
 
+    # program logic here
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: main() in {FINISH_TIME} seconds")
     return
 
 
@@ -47,8 +49,11 @@ def function_template():
     """Description here"""
     START_TIME = time()
     logger.debug("Function called: function_template()")
+
     # program logic here
-    logger.debug(f"Function finished: function_template() finished in {round(time() - START_TIME, 2)} seconds")
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: function_template() in {FINISH_TIME} seconds")
 
     return
 

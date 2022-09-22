@@ -2,7 +2,7 @@
 """
 Python Version  : 3.8
 * Name          : test_code.py
-* Description   : Boilerplate pytest python script
+* Description   : Example usage of calling the pytests
 * Created       : 26-02-2021
 * Usage         : pytest tests/test_code.py
 """

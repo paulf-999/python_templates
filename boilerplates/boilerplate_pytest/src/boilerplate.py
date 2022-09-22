@@ -2,7 +2,7 @@
 """
 Python Version  : 3.8
 * Name          : boilerplate.py
-* Description   : Boilerplate python script
+* Description   : Boilerplate pytest script. All pytest functions should be stored here
 * Created       : 26-02-2021
 * Usage         : python3 boilerplate.py
 """
