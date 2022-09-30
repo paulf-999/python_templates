@@ -71,7 +71,7 @@ def generate_bulk_fake_data(fake_generator):
 
 
 def provider_example(fake_generator):
-    """Generate fake data in bulk"""
+    """Example of using a Faker provider"""
     START_TIME = time()
     logger.debug("Function called: function_template()")
 
@@ -93,8 +93,8 @@ if __name__ == "__main__":
     # create and initialize a faker generator. Ireland localisation arg provided
     fake_generator = Faker("en_IE")
 
-    # simple_example(fake_generator)
+    simple_example(fake_generator)
 
-    # generate_bulk_fake_data(fake_generator)
+    generate_bulk_fake_data(fake_generator)
 
     provider_example(fake_generator)
