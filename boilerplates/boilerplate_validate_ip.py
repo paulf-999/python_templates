@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 Python Version  : 3.8
-* Name          : boilerplate_w_ip_validation.py
+* Name          : boilerplate_validate_ip.py
 * Description   : Boilerplate python script, for basic ip validation
 * Created       : 26-02-2021
-* Usage         : python3 boilerplate_w_ip_validation.py
+* Usage         : python3 boilerplate_validate_ip.py
 """
 
 __author__ = "Paul Fry"
@@ -36,16 +36,25 @@ def main():
     """Main entry point of the app"""
     START_TIME = time()
     logger.debug("Function called: main()")
+
     # program logic here
-    logger.debug(f"Function finished: main() finished in {round(time() - START_TIME, 2)} seconds")
+    function_template()
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: main() in {FINISH_TIME} seconds")
+
+    return
 
 
 def function_template():
     """Description here"""
     START_TIME = time()
     logger.debug("Function called: function_template()")
-    # program logic here
-    logger.debug(f"Function finished: function_template() finished in {round(time() - START_TIME, 2)} seconds")
+
+    logger.info("Hello, world!")
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: function_template() in {FINISH_TIME} seconds")
 
     return
 
@@ -58,15 +67,13 @@ if __name__ == "__main__":
         print("\nError: No input arguments provided.\n")
         print("Usage:\npython3 boilerplate.py [numeric value here]\n")
     else:
-        eg_arg = sys.argv[1]
+        input_arg = sys.argv[1]
 
-        print(eg_arg)
-
-        try:
-            eg_arg = eg_arg / 2
-        except TypeError:
-            print("\nError: 'eg_arg' arg must be an even number.\n")
-            print("Usage:\npython3 boilerplate_w_ip_validation.py '[eg_arg]'\n")
+        # eg_arg = int(eg_arg) / 2
+        is_even = int(input_arg) % 2
+        if is_even != 0:
+            logger.error("\nError: input_arg arg must be an even number.\n")
+            logger.info("Usage:\npython3 boilerplate_w_ip_validation.py <input_arg>'\n")
             raise (SystemExit)
 
     main()

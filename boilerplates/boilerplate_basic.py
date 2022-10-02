@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
 Python Version  : 3.8
-* Name          : boilerplate.py
-* Description   : Boilerplate pytest script. All pytest functions should be stored here
+# TODO: change these
+* Name          : boilerplate_basic.py
+* Description   : Boilerplate python script
 * Created       : 26-02-2021
-* Usage         : python3 boilerplate.py
+* Usage         : python3 boilerplate_basic.py
 """
 
 __author__ = "Paul Fry"
-__version__ = "0.1"
+__version__ = "1.0"
 
 import os
 
@@ -37,8 +38,12 @@ def main():
     """Main entry point of the app"""
     START_TIME = time()
     logger.debug("Function called: main()")
+
     # program logic here
-    logger.debug(f"Function finished: main() finished in {round(time() - START_TIME, 2)} seconds")
+    function_template()
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: main() in {FINISH_TIME} seconds")
 
     return
 
@@ -47,14 +52,13 @@ def function_template():
     """Description here"""
     START_TIME = time()
     logger.debug("Function called: function_template()")
-    # program logic here
-    logger.debug(f"Function finished: function_template() finished in {round(time() - START_TIME, 2)} seconds")
+
+    logger.info("Hello, world!")
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: function_template() in {FINISH_TIME} seconds")
 
     return
-
-
-def is_even(number):
-    return number % 2 == 0
 
 
 if __name__ == "__main__":

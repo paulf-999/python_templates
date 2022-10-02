@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """
 Python Version  : 3.8
-* Name          : boilerplate.py
+* Name          : boilerplate_read_ip_from.py
 * Description   : Boilerplate python script that reads ip from config file
 * Created       : 26-02-2021
-* Usage         : python3 boilerplate_w_ip.py
+* Usage         : python3 boilerplate_read_ip_from config.py
 """
 
 __author__ = "Paul Fry"
-__version__ = "0.1"
+__version__ = "1.0"
 
 import os
 
-# import sys
 from datetime import datetime
 from time import time
 import logging
@@ -49,15 +48,16 @@ def read_ip():
     START_TIME = time()
     logger.debug("Function called: read_ip()")
 
-    with open("config.json", "r") as f:
+    with open("config.json") as f:
         data = json.load(f)
 
-    key1 = data["Parameters"]["Key1"]
+    key1 = data["parameters"]["key1"]
 
-    logger.info(f"config = {data}")
-    logger.info(f"config = {key1}")
+    logger.debug(f"config = {data}")
+    logger.info(f"key1 = {key1}")
 
-    logger.debug(f"Function finished: read_ip() finished in {round(time() - START_TIME, 2)} seconds")
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: read_ip() in {FINISH_TIME} seconds")
 
     return
 
@@ -66,8 +66,11 @@ def function_template():
     """Description here"""
     START_TIME = time()
     logger.debug("Function called: function_template()")
+
     # program logic here
-    logger.debug(f"Function finished: function_template() finished in {round(time() - START_TIME, 2)} seconds")
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: function_template() in {FINISH_TIME} seconds")
 
     return
 
