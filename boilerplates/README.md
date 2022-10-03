@@ -4,6 +4,6 @@ For a list of error types, see: [python error types](https://www.tutorialsteache
 
 ## pytest
 
-In the boilerplate example here, run `pytest tests/test_code.py`
+In the boilerplate example here, run `pytest tests/test_cases.py`
 
 See: https://medium.com/plusteam/pytest-beginners-guide-9fb9451706bf
