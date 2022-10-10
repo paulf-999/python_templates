@@ -18,8 +18,6 @@ import sys
 
 import logging
 
-# import custom modules
-
 working_dir = os.getcwd()
 # Set up a specific logger with our desired output level
 logging.basicConfig(format="%(message)s")
@@ -39,26 +37,35 @@ def read_input_file(file_path: str, input_file: str):
         logger.info("------------------------------------")
         logger.info(f"Reading contents from input file:\n{full_input_file_path}")
         logger.info("------------------------------------\n")
-        with open(full_input_file_path) as f:
+        with open(full_input_file_path) as ip_file:
             try:
                 if os.stat(full_input_file_path).st_size > 0:
                     logger.info("Valid input file found")
                 else:
                     logger.error("Input file is empty")
                     sys.exit(0)
+
             except OSError:
                 logger.error("Input file not found")
-            file_contents = [line.strip() for line in f]
-            f.close()
+            file_contents = [line.strip() for line in ip_file]
+            ip_file.close()
             return file_contents
+
     except FileNotFoundError:
         raise FileNotFoundError(f"ERROR - file '{full_input_file_path}' does not exist") from None
+
     except Exception as error:
         logger.error(error)
         raise error
 
 
 def check_input_file_extension(input_file: str, valid_file_types: list):
+    """
+    Function to verify only specified (input file) file types are processed
+    :param input_file (string): input file to check the file extension
+    :param valid_file_types (list): list of valid file types
+    :return: Returns a list where each element is a new line from the file read
+    """
     logger.info("------------------------------------")
     logger.info(f"Check filename extension of: {input_file}")
     logger.info(f"valid_file_types = {list(valid_file_types)}")
@@ -90,7 +97,29 @@ def read_csv_file():
     return
 
 
+def read_xls_file():
+
+    # TODO
+
+    return
+
+
 def read_yaml_file():
+
+    # TODO
+
+    return
+
+
+def read_json_file():
+
+    # TODO
+
+    return
+
+
+def verify_filename():
+    # verify (input file) filename matches input regex
 
     # TODO
 
