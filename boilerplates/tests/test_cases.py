@@ -1,4 +1,4 @@
-from boilerplate_pytest import is_even
+from boilerplate_basic_pytest import is_even
 
 
 # use the below to provide test_cases
