@@ -5,7 +5,7 @@ Python Version  : 3.8
 * Name          : boilerplate_basic.py
 * Description   : Boilerplate python script
 * Created       : 26-02-2021
-* Usage         : python3 boilerplate_python_script.py
+* Usage         : python3 boilerplate_basic.py
 """
 
 __author__ = "Paul Fry"
@@ -14,6 +14,7 @@ __version__ = "1.0"
 import os
 # import sys
 from datetime import datetime
+from time import time
 import logging
 
 working_dir = os.getcwd()
@@ -34,20 +35,29 @@ def get_logger():
 
 def main():
     """Main entry point of the app"""
+    START_TIME = time()
     logger = get_logger()
-    logger.info("example")
+    logger.debug("Function called: main()")
 
     # program logic here
     function_template()
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: main() in {FINISH_TIME} seconds")
 
     return
 
 
 def function_template():
     """Description here"""
+    START_TIME = time()
     logger = get_logger()
+    logger.debug("Function called: function_template()")
 
     logger.info("Hello, world!")
+
+    FINISH_TIME = round(time() - START_TIME, 2)
+    logger.debug(f"Function finished: function_template() in {FINISH_TIME} seconds")
 
     return
 
