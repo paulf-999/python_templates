@@ -17,7 +17,6 @@ import sys
 from datetime import datetime
 from time import time
 import logging
-import json
 import pandas as pd
 
 working_dir = os.getcwd()

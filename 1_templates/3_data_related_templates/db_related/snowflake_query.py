@@ -38,9 +38,16 @@ def snowflake_query(snowflake_db, schema_name, sql_query):
 
     conn_params = get_conn_params()
 
-    snowflake_account, username, password, snowflake_wh = [conn_params[i] for i in (0, 1, 2, 3)]
+    snowflake_account, username, password, snowflake_wh = (conn_params[i] for i in (0, 1, 2, 3))
 
-    conn = snowflake.connector.connect(user=f"{username}", password=f"{password}", account=f"{snowflake_account}", warehouse=f"{snowflake_wh}", database=f"{snowflake_db}", schema=f"{schema_name}")
+    conn = snowflake.connector.connect(
+        user=f"{username}",
+        password=f"{password}",
+        account=f"{snowflake_account}",
+        warehouse=f"{snowflake_wh}",
+        database=f"{snowflake_db}",
+        schema=f"{schema_name}"
+    )
     cursor = conn.cursor()
     try:
         cursor.execute(sql_query)
@@ -68,7 +75,7 @@ def get_conn_params():
     START_TIME = time()
     logger.debug("Function called: get_conn_params()")
 
-    with open(os.path.join(working_dir, "env/env.json"), "r") as ip_file:
+    with open(os.path.join(working_dir, "env/env.json")) as ip_file:
         ip_dict_args = json.load(ip_file)
 
     snowflake_account = ip_dict_args["snowflake_account"]

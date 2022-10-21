@@ -56,7 +56,7 @@ def send_message_to_slack(text):
     """Function to post a message to a Slack channel"""
     START_TIME = time()
     logger.debug("Function called: send_message_to_slack()")
-    post = {"text": "{0}".format(text)}
+    post = {"text": f"{text}"}
 
     try:
         json_data = json.dumps(post)

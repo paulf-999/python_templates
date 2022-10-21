@@ -9,12 +9,12 @@ Python Version  : 3.8
 see: https://knasmueller.net/using-the-open-weather-map-api-with-python
 https://home.openweathermap.org/api_keys
 """
-
+import json
+import logging
 import os
 from time import time
-import logging
+
 import requests
-import json
 
 # import custom modules
 
@@ -32,7 +32,7 @@ def get_weather_data(lat, lon, api_key):
     START_TIME = time()
     logger.debug("Function called: get_weather_data()")
 
-    url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&appid=%s&units=metric" % (lat, lon, api_key)
+    url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={api_key}&units=metric"
 
     response = requests.get(url)
     weather_data = json.loads(response.text)
