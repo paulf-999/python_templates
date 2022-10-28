@@ -19,10 +19,4 @@ jobs:
       - name: Install pyflakes
         run: pip3 install pyflakes
       - name: Run pyflakes against boilerplate scripts
-        run: pyflakes boilerplates/
-      - name: Run pyflakes against data-related/api_calls scripts
-        run: pyflakes data_related/api_calls/
-      - name: Run pyflakes against data-related/db_related scripts
-        run: pyflakes data_related/db_related/
-      - name: Run pyflakes against 'other' scripts
-        run: pyflakes other/
+        run: pyflakes 1_templates/
