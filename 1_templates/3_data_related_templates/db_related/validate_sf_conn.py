@@ -4,6 +4,7 @@ import snowflake.connector
 # Gets the version
 ctx = snowflake.connector.connect(user="", password="", account="")
 cs = ctx.cursor()
+
 try:
     cs.execute("SELECT current_version()")
     one_row = cs.fetchone()
