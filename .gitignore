@@ -40,3 +40,5 @@ logs
 # Runtime data
 pids
 *.pid
+
+config_mine.yaml

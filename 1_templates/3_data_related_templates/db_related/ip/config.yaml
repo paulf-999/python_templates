@@ -1,6 +1,5 @@
-{
-    "snowflake_account": "<SNOWFLAKE_ACCOUNT>",
-    "sf_username" : "<USERNAME>",
-    "sf_password" : "<PASSWORD>",
-    "snowflake_wh" : "<SNOWFLAKE_WH>"
-}
+---
+db_connection_params:
+  snowflake_username: # e.g., jbloggs@email.com
+  snowflake_pass: # e.g., jbloggs@email.com
+  snowflake_account: <snowflake_account>.ap-southeast-2
