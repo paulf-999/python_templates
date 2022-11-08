@@ -1,10 +1,17 @@
-# Python Style Guide / Coding Standards
+# Python Templates
 
-This style guide is a list of do’s and don’ts for Python data pipeline development.
+Python template scripts I've collated over time, as described below.
 
----
+| Folder       | Description |
+| -------------| ------------|
+| `1_generic_templates` | Generic template python scripts |
+| `2_pytest_templates` | Generic pytest_templates |
+| `3_data_related_templates` | Data-related python scripts, e.g. containing standardised code for DB/API calls |
 
-## Contents
+
+## Python Style Guide / Coding Standards
+
+Throughout the template scripts developed, the following style guide of do’s and don’ts for Python data pipeline development has been used, covering three main areas:
 
 1. Naming conventions and standards
 2. General guidelines.
