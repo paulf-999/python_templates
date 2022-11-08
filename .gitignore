@@ -23,6 +23,9 @@ downloads/
 
 # Unit test / coverage reports
 .pytest_cache/
+# pytest-html generated report
+report.html
+assets/
 
 # Environments
 .env
