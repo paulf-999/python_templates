@@ -1,4 +1,5 @@
 import logging
+import re
 
 import pytest
 from boilerplate_basic_pytest import is_even
@@ -53,4 +54,23 @@ def test_pytestconfig_usage(pytestconfig_fixture_eg):
 
     assert len(pytestconfig_fixture_eg) > 0
 
-# TODO - parameterisations
+
+# fmt: off
+list_input = [
+    "increase_count_by_one",
+    "materials_procurement",
+    "material_warehousing"  # , `SnakeCaseRegexFailExample` is designed to fail
+    # "SnakeCaseRegexFailExample"
+]
+# fmt: on
+
+
+# pytest parametrize allows you to repeat a given test for a set of input values.
+@pytest.mark.parametrize("filename", list_input)
+def test_verify_dag_name_is_valid(filename):
+    """Valid filenames should only contain (lower-case) alphanumeric characters and underscores
+    They shouldn't contain whitespace, dashes or dots"""
+
+    valid_filename = "^[^- .][a-z_1-9]*$"
+
+    assert re.match(valid_filename, filename)  # nosec

@@ -19,3 +19,9 @@ pytestconfig_eg:
 	# pytestconfig allows you to provide extra command line args.
 	@echo
 	@pytest -k "test_pytestconfig_usage" --pytest_example_arg "abc" ${CLI_ARGS} ${MORE_DETAIL}
+
+pytest_parameterize_eg:
+	@pytest -k test_verify_dag_name_is_valid ${CLI_ARGS}
+
+pytest_sf_conn:
+	@pytest -k test_sf_conn_bad_credentials ${CLI_ARGS}

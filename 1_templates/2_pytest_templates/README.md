@@ -26,6 +26,10 @@ They're also commonly used with fixtures as a way to always provide an additiona
 
 See `pytestconfig_fixture_eg` in `test_pytest_reusable_components.py`.
 
+### Parameterize
+
+# TODO
+
 ---
 
 ## Useful PyTest Command Line Args
