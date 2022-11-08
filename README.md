@@ -6,6 +6,7 @@ Python template scripts I've collated over time, as described below.
 | -------------| ------------|
 | `1_generic_templates` | Generic template python scripts |
 | `2_data_related_templates` | Data-related python scripts, e.g. containing standardised code for DB/API calls |
+| `3_other_templates` | Collection of templates that aren't generic or data-related! |
 
 
 ## Python Style Guide / Coding Standards
