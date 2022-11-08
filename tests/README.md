@@ -1,26 +1,12 @@
-# Folder contents
+# Common Components
 
-| Folder       | Description |
-| -------------| ------------|
-| `1_generic_templates` | Generic template python scripts |
-| `2_read_ip_templates` | Simple templates for reading from input files|
-| `3_data_related_templates` | Data-related python scripts, e.g. containing standardised code for DB/API calls |
-
-## PyTest Templates
-
-Also within the `tests` folder and the Makefile are targets & example pytests that can be reused.
-
-Example of some of the topics below are covered in the example pytest scripts.
-
-## Common Components
-
-### Fixtures
+## Fixtures
 
 Fixtures are used when we want to run some code before every test method. So instead of repeating the same code in every test we define fixtures.
 
 See `test_fixture_example()` in `test_pytest_reusable_components.py`.
 
-### PyTestConfig
+## PyTestConfig
 
 PyTestConfig builtins allow you to provide additional command line arguments to your pytests. A good overview is described here: [Using pytestconfig](https://medium.com/pragmatic-programmers/using-pytestconfig-eaeacedbe29a).
 
@@ -28,9 +14,9 @@ They're also commonly used with fixtures as a way to always provide an additiona
 
 See `pytestconfig_fixture_eg` in `test_pytest_reusable_components.py`.
 
-### Parameterize
+## Parameterize
 
-# TODO
+<TODO>
 
 ---
 

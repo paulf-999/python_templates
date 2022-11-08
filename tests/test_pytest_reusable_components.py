@@ -2,6 +2,7 @@ import logging
 import re
 
 import pytest
+
 from basic_pytest import is_even
 
 logging.basicConfig(format='%(message)s')

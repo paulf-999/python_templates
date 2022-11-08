@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 import logging
 
-import inputs
 import snowflake.connector
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from snowflake.connector.errors import DatabaseError
 from snowflake.connector.errors import ProgrammingError
+
+import inputs
 
 # Set up a specific logger with our desired output level
 logging.basicConfig(format='%(message)s')
