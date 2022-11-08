@@ -5,7 +5,7 @@ Python template scripts I've collated over time, as described below.
 | Folder       | Description |
 | -------------| ------------|
 | `1_generic_templates` | Generic template python scripts |
-| `2_pytest_templates` | Generic pytest_templates |
+| `2_read_input_templates` | Simple examples for reading input config files |
 | `3_data_related_templates` | Data-related python scripts, e.g. containing standardised code for DB/API calls |
 
 

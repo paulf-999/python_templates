@@ -18,7 +18,7 @@ pytest_fixture_example:
 pytestconfig_eg:
 	# pytestconfig allows you to provide extra command line args.
 	@echo
-	@pytest -k "test_pytestconfig_usage" --pytest_example_arg "abc" ${CLI_ARGS} ${MORE_DETAIL} --html=report.html
+	@pytest -k "test_pytestconfig_usage" --pytest_example_arg "abc" ${CLI_ARGS} --html=report.html
 
 pytest_parameterize_eg:
 	@pytest -k test_verify_dag_name_is_valid ${CLI_ARGS} ${MORE_DETAIL} --html=report.html
