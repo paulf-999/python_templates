@@ -5,14 +5,9 @@ import os
 import snowflake.connector
 import yaml
 
-
-def get_logger():
-    """Set up a specific logger with our desired output level"""
-    logging.basicConfig(format="%(message)s")
-    logger = logging.getLogger("application_logger")
-    logger.setLevel(logging.INFO)
-
-    return logger
+logging.basicConfig(format="%(message)s")
+logger = logging.getLogger("application_logger")
+logger.setLevel(logging.INFO)
 
 
 def read_ip():
@@ -20,8 +15,8 @@ def read_ip():
 
     working_dir = os.getcwd()
 
-    # with open(os.path.join(working_dir, "ip", "config_mine.yaml")) as ip_yml:
-    with open(os.path.join(working_dir, "ip", "config.yaml")) as ip_yml:
+    with open(os.path.join(working_dir, "ip", "config_mine.yaml")) as ip_yml:
+        # with open(os.path.join(working_dir, "ip", "config.yaml")) as ip_yml:
         data = yaml.safe_load(ip_yml)
 
     snowflake_username = data["db_connection_params"]["snowflake_username"]
@@ -33,7 +28,6 @@ def read_ip():
 
 def main():
     """Main entry point of the app"""
-    logger = get_logger()
 
     # get inputs
     snowflake_username, snowflake_pass, snowflake_account = read_ip()
