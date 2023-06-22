@@ -1,0 +1,12 @@
+create or replace TRANSIENT TABLE eg_tbl (
+col_a VARCHAR(16777216),
+col_b VARCHAR(16777216),
+col_c VARCHAR(16777216),
+col_d DATE,
+col_e DATE,
+col_f NUMBER(38,0),
+col_g VARCHAR(32),
+col_h DATE,
+col_i DATE,
+col_j DATE
+);

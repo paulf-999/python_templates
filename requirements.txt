@@ -1,2 +1,55 @@
+# dbt-Related Libraries
+snowflake-connector-python
+dbt-snowflake
+sqlfluff-templater-dbt
+shandy-sqlfmt[jinjafmt]
+
+# Commonly Used/CLI Libraries
+awscliv2
+boto3
+dotenv
+j2cli
+pre-commit
+pytest
 pytest-cov
 pytest-html
+pyyaml
+urllib3
+s3fs
+virtualenv
+virtualenvwrapper
+wget
+yq
+
+# Azure libs
+azure.identity
+azure.keyvault.secrets
+
+# Code Quality Libraries
+black
+flake8
+pylint
+sqlfluff
+
+# File Parsing Libraries
+numpy
+openpyxl
+pandas
+
+# Database-Related Libraries
+duckdb
+pymssql
+pyodbc
+SQLAlchemy
+
+# Airflow-Related Libraries
+apache-airflow
+gunicorn
+pendulum
+pyarrow
+pylint-airflow
+
+# General Purpose/Other Libraries
+diagrams
+Faker
+humanfriendly

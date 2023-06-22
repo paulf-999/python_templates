@@ -1,0 +1,1212 @@
+Date: Thu, 22 Jun 2023 05:28:21 +0000 (UTC)
+Message-ID: <1815040527.15.1687411701944@97746f2b1278>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_Part_14_11894173.1687411701943"
+
+------=_Part_14_11894173.1687411701943
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Python - Style Guide</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Python - Style Guide</h1>
+    <div class=3D"Section1">
+        <p><strong>Page Status</strong>: <span class=3D"status-macro aui-lo=
+zenge aui-lozenge-complete">READY FOR REVIEW</span></p>
+<p><strong>Creator</strong>: Paul Fry</p>
+<p><strong>Version</strong>: 0.2</p>
+<p><strong>Date Created</strong>: 21st June 2023</p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-informa=
+tion-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p>Here is a Python style guide following commonly accepted conventions and=
+ best practices.</p>
+</div>
+</div>
+<h1 id=3D"Python-StyleGuide-Contents">Contents</h1>
+<hr>
+<h1 id=3D"Python-StyleGuide-1.NamingConventions">1. Naming Conventions</h1>
+<h2 id=3D"Python-StyleGuide-1.1.CaseStyles,Per-PythonObject">1.1. Case Styl=
+es, Per-Python Object</h2>
+<p>In summary: </p>
+<ol start=3D"1">
+<li><p>Use <code>snake_case</code><em> </em>for all module, package, functi=
+on and variable names.</p></li>
+<li><p>Use <code>CamelCase</code><em> </em>for classes.</p></li>
+<li><p>Use <code>SCREAMING_SNAKE_CASE</code><em> </em>for constants.</p></l=
+i>
+</ol>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-informa=
+tion-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p><strong>What is </strong><code>snake_case</code>?</p>
+<p>Expand the menu below for more details.</p>
+</div>
+</div>
+<div id=3D"expander-1622225159" class=3D"expand-container">
+<div id=3D"expander-control-1622225159" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Expand fo=
+r details</span>
+</div>
+<div id=3D"expander-content-1622225159" class=3D"expand-content">
+<p><code>snake_case</code> combines words by replacing each space with an u=
+nderscore (_), and all letters are lowercase, as follows:</p>
+<p><strong>Raw</strong>: user login count</p>
+<p><strong>Snake case</strong>: <code>user_login_count</code></p>
+<ul>
+<li><p><a class=3D"external-link" href=3D"https://betterprogramming.pub/str=
+ing-case-styles-camel-pascal-snake-and-kebab-case-981407998841" rel=3D"nofo=
+llow">The following link</a> explains the differences between different cas=
+e styles.</p></li>
+<li><p>One of the benefits of <code>snake_case</code> is that many of the a=
+llowed characters are compatible across S3 and Snowflake.</p></li>
+</ul>
+</div>
+</div>
+<h3 id=3D"Python-StyleGuide-CaseStyleSpecification">Case Style Specificatio=
+n</h3>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"00f9eb21-6481-40f0-9ccd-c18=
+b3fb2dea5" class=3D"confluenceTable">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"numberingColumn confluenceTh"></th>
+<th class=3D"confluenceTh"><p><strong>Related to</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Naming Convention</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Example</strong></p></th>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">1</td>
+<td class=3D"confluenceTd"><p>Module names</p></td>
+<td class=3D"confluenceTd"><p><code>snake_case</code> (i.e., <code>lowercas=
+e_with_underscores</code>)</p></td>
+<td class=3D"confluenceTd"><p><code>lowercase_with_underscores.py</code></p=
+></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">2</td>
+<td class=3D"confluenceTd"><p>Package names</p></td>
+<td class=3D"confluenceTd"><p><code>snake_case</code></p></td>
+<td class=3D"confluenceTd"><p><code>lowercase_with_underscores</code></p></=
+td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">3</td>
+<td class=3D"confluenceTd"><p>Class names</p></td>
+<td class=3D"confluenceTd"><p><code>CamelCase</code></p></td>
+<td class=3D"confluenceTd"><p><code>ExampleClass</code></p></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">4</td>
+<td class=3D"confluenceTd"><p>Function and method names</p></td>
+<td class=3D"confluenceTd"><p><code>snake_case</code></p></td>
+<td class=3D"confluenceTd"><p><code>def example_function():</code></p></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">5</td>
+<td class=3D"confluenceTd"><p>Variable names</p></td>
+<td class=3D"confluenceTd"><p><code>snake_case</code></p></td>
+<td class=3D"confluenceTd"><p><code>working_dir =3D os.getcwd()</code></p><=
+/td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">6</td>
+<td class=3D"confluenceTd"><p>Constants</p></td>
+<td class=3D"confluenceTd"><p><code>SCREAMING_SNAKE_CASE</code> (i.e., <cod=
+e>UPPERCASE_WITH_UNDERSCORES</code>)</p></td>
+<td class=3D"confluenceTd">
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">PI =3D 3.=
+14</pre>=20
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"Python-StyleGuide-1.2.AvoidAbbreviations">1.2. Avoid Abbreviation=
+s</h2>
+<ul>
+<li><p>Function names, variables and filenames should all be descriptive an=
+d eschew abbreviation</p></li>
+<li><p>Don=E2=80=99t use abbreviations that are ambiguous to readers outsid=
+e your projects</p></li>
+<li><p>Don=E2=80=99t abbreviate by deleting letters within a word</p></li>
+</ul>
+<hr>
+<h1 id=3D"Python-StyleGuide-2.CodeLayout">2. Code Layout</h1>
+<h2 id=3D"Python-StyleGuide-2.1.General">2.1. General</h2>
+<p><a class=3D"external-link" href=3D"https://peps.python.org/pep-0008/" re=
+l=3D"nofollow">PEP 8 is the official style guide for Python code</a>. It pr=
+ovides a set of conventions for writing readable and consistent code. The k=
+ey general recommendations are listed below:</p>
+<ul>
+<li><p>Using four spaces for indentation</p></li>
+<li><p>Limit lines to 79 characters</p></li>
+<li><p>Use blank lines to separate functions and classes</p></li>
+</ul>
+<p>Expand the menu below for further details on these (including examples).=
+</p>
+<div id=3D"expander-1085737852" class=3D"expand-container">
+<div id=3D"expander-control-1085737852" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Click to =
+expand</span>
+</div>
+<div id=3D"expander-content-1085737852" class=3D"expand-content">
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"02546208-c27c-40fa-9ecd-3fc=
+6d4ebe900" class=3D"confluenceTable">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"numberingColumn confluenceTh"></th>
+<th class=3D"confluenceTh"><p><strong>Related to</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Description</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Example</strong></p></th>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">1</td>
+<td class=3D"confluenceTd"><p>Indentation</p></td>
+<td class=3D"confluenceTd"><p>Use four spaces for indentation (i.e., avoid =
+tabs.)</p></td>
+<td class=3D"confluenceTd"><p>-</p></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">2</td>
+<td class=3D"confluenceTd"><p>Line length</p></td>
+<td class=3D"confluenceTd"><p>Limit lines to a maximum of 79 characters.</p=
+></td>
+<td class=3D"confluenceTd"><p>-</p></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">3</td>
+<td class=3D"confluenceTd"><p>Whitespace: imports, classes and functions</p=
+></td>
+<td class=3D"confluenceTd"><p>Use a newline after imports and before the cl=
+ass or function definition.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import os
+...
+
+from requests import HTTPError
+
+
+def example_function():</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import os
+...
+
+from requests import HTTPError
+def example_function():</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">4</td>
+<td class=3D"confluenceTd"><p>Whitespace: methods and classes</p></td>
+<td class=3D"confluenceTd"><p>Separate methods and classes with two blank l=
+ines.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import os
+...
+
+from requests import HTTPError
+
+
+def example_function():</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import os
+...
+
+from requests import HTTPError
+def example_function():</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">5</td>
+<td class=3D"confluenceTd"><p>Whitespace: operators and commas</p></td>
+<td class=3D"confluenceTd"><p>Use a single space around operators and after=
+ commas.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">return sh=
+arepoint.get_site(host, 'sites/' + site_name.replace(" ", ""))</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">return sh=
+arepoint.get_site(host,'sites/'+site_name.replace(" ", ""))</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">6</td>
+<td class=3D"confluenceTd"><p>Whitespace: code readability</p></td>
+<td class=3D"confluenceTd"><p>Code <strong>MUST</strong> be spaced logicall=
+y to maintain readability.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence"># Pipelin=
+e parameters
+src_bucket =3D self.s3_bucket_src
+logging.info(f=E2=80=9Dsource_bucket =3D {src_bucket}=E2=80=9D)
+
+target_bucket =3D self.s3_bucket_target
+logging.info(f=E2=80=9Dtarget_bucket =3D {target_bucket}=E2=80=9D)</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence"># Pipelin=
+e parameters
+src_bucket =3D self.s3_bucket_src
+logging.info(f=E2=80=9Dsource_bucket =3D {src_bucket}=E2=80=9D)
+target_bucket =3D self.s3_bucket_target
+logging.info(f=E2=80=9Dtarget_bucket =3D {target_bucket}=E2=80=9D)</pre>=20
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h2 id=3D"Python-StyleGuide-2.2.Imports">2.2. Imports</h2>
+<ul>
+<li><p>Import modules on separate lines.</p></li>
+<li><p>Use absolute imports whenever possible.</p></li>
+<li><p>Avoid wildcard imports (<code>from module import *</code>)<em>.</em>=
+</p></li>
+<li><p>Place imports in the following order: standard library modules, thir=
+d-party modules, and local modules.</p></li>
+</ul>
+<p>For further details (with examples), expand the menu below.</p>
+<div id=3D"expander-1919997398" class=3D"expand-container">
+<div id=3D"expander-control-1919997398" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Click to =
+expand</span>
+</div>
+<div id=3D"expander-content-1919997398" class=3D"expand-content">
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"ad4b7f98-5f3a-4e1b-8e5a-0e1=
+67bde51b0" class=3D"confluenceTable">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"numberingColumn confluenceTh"></th>
+<th class=3D"confluenceTh"><p><strong>Description</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Example</strong></p></th>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">1</td>
+<td class=3D"confluenceTd"><p>Import modules on separate lines.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import os
+import re</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import os=
+, re</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">2</td>
+<td class=3D"confluenceTd"><p>Use absolute imports whenever possible.</p></=
+td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">from pack=
+age2.subpackage1.module5 import function2</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">from .sub=
+package1.module5 import function2</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">3</td>
+<td class=3D"confluenceTd"><p>Avoid wildcard imports (<code>from module imp=
+ort *</code>)</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">from math=
+ import ceil</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">from math=
+ import *</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">4</td>
+<td class=3D"confluenceTd"><p>Place imports in the following order:</p>
+<ol start=3D"1">
+<li><p>Standard library modules</p></li>
+<li><p>Third-party modules</p></li>
+<li><p>Then local modules.</p></li>
+</ol></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import os=
+ # standard modules
+import boto3 # third-party modules
+import my_local_module # local modules</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">import bo=
+to3 # third-party modules
+import my_local_module # local modules
+import os # standard modules</pre>=20
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<h1 id=3D"Python-StyleGuide-3.Stringformatting">3. String formatting</h1>
+<h2 id=3D"Python-StyleGuide-3.1.Usef-strings">3.1. Use <code>f-strings</cod=
+e></h2>
+<ul>
+<li><p><code>f-strings</code> should be used where possible, they provide a=
+ clean way to format strings.</p></li>
+<li><p>Avoid using <code>str().format</code>.</p></li>
+<li><p>Detailed examples of <code>f-strings</code> in action can be found <=
+a class=3D"external-link" href=3D"https://realpython.com/python-f-strings/"=
+ rel=3D"nofollow">here</a>.</p></li>
+</ul>
+<h2 id=3D"Python-StyleGuide-3.2.StringQuotes">3.2. String Quotes</h2>
+<ul>
+<li><p>Use single quotes for string literals.</p></li>
+<li><p>Use double quotes inside strings to avoid escaping.</p></li>
+<li><p>Use triple quotes for docstrings and multi-line strings.</p></li>
+</ul>
+<p>Expand the menu below for more details, including examples.</p>
+<div id=3D"expander-128929914" class=3D"expand-container">
+<div id=3D"expander-control-128929914" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Click to =
+expand</span>
+</div>
+<div id=3D"expander-content-128929914" class=3D"expand-content">
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"75a2927a-d488-4a42-9378-05c=
+bdfa5ac8b" class=3D"confluenceTable">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"numberingColumn confluenceTh"></th>
+<th class=3D"confluenceTh"><p><strong>Description</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Example</strong></p></th>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">1</td>
+<td class=3D"confluenceTd"><p>Use single quotes for string literals.</p></t=
+d>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">print('He=
+llo')</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">print("He=
+llo")</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">2</td>
+<td class=3D"confluenceTd"><p>Use double quotes inside strings to avoid esc=
+aping.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">'Sammy sa=
+ys, "Hello!"'</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">"Sammy sa=
+ys, \"Hello!\""</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">3</td>
+<td class=3D"confluenceTd"><p>Use triple quotes for docstrings and multi-li=
+ne strings.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">"""
+This string is on=20
+multiple lines
+within three double=20
+quotes on either side.
+"""</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence"># This st=
+ring is on=20
+# multiple lines
+# within three double=20
+# quotes on either side.</pre>=20
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<h1 id=3D"Python-StyleGuide-4.FunctionandMethodDefinitions">4. Function and=
+ Method Definitions</h1>
+<ul>
+<li><p>Define function parameters without spaces around the equals sign.</p=
+></li>
+<li><p>Use a single space after the comma in function definitions.</p></li>
+<li><p>Place default arguments at the end of the argument list.</p></li>
+</ul>
+<p>Expand the menu below for more details (and examples):</p>
+<div id=3D"expander-1285066459" class=3D"expand-container">
+<div id=3D"expander-control-1285066459" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Click to =
+expand</span>
+</div>
+<div id=3D"expander-content-1285066459" class=3D"expand-content">
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"5a65315e-2dd9-4ce2-be46-0e2=
+c7aca48d0" class=3D"confluenceTable">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"numberingColumn confluenceTh"></th>
+<th class=3D"confluenceTh"><p><strong>Related to</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Description</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Example</strong></p></th>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">1</td>
+<td class=3D"confluenceTd"><p>Whitespace in function parameters</p></td>
+<td class=3D"confluenceTd"><p>Define function parameters without spaces aro=
+und the equals sign.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">func(1, 2=
+, axis=3D'x', angle=3D90, size=3D450, name=3D'foo bar')</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">func(1, 2=
+, axis =3D 'x', angle =3D 90, size =3D 450, name =3D 'foo bar')</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">2</td>
+<td class=3D"confluenceTd"><p>Whitespace in function definitions</p></td>
+<td class=3D"confluenceTd"><p>Use a single space after the comma in functio=
+n definitions.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">func(1, 2=
+, axis=3D'x', angle=3D90, size=3D450, name=3D'foo bar')</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">func(1,2,=
+axis=3D'x',angle=3D90,size=3D450,name=3D'foo bar')</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">3</td>
+<td class=3D"confluenceTd"><p>Default arguments</p></td>
+<td class=3D"confluenceTd"><p>Place default arguments at the end of the arg=
+ument list.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def stude=
+nt(firstname, lastname =3D'Mark', standard =3D'Fifth'):</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def stude=
+nt(lastname =3D'Mark', standard =3D'Fifth', firstname):</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">4</td>
+<td class=3D"confluenceTd"><p>Data type declarations</p></td>
+<td class=3D"confluenceTd"><p>Use type declarations for method arguments an=
+d return values</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def get_s=
+ecret_by_name(secret_name: str) -&gt; str:
+
+  ...
+ =20
+  secret =3D &lt;code here&gt;
+ =20
+  return secret</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def get_s=
+ecret_by_name(secret_name):
+ =20
+  ...
+ =20
+  secret =3D &lt;code here&gt;
+ =20
+  return s</pre>=20
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<h1 id=3D"Python-StyleGuide-5.CommentsandDocstrings">5. Comments and Docstr=
+ings</h1>
+<ul>
+<li><p>Use inline comments sparingly and keep them concise.</p></li>
+<li><p>Use docstrings to document modules, classes, methods, and functions.=
+</p></li>
+<li><p>Write clear, self-explanatory code and minimise the need for comment=
+s.</p></li>
+</ul>
+<h2 id=3D"Python-StyleGuide-5.1.Don=E2=80=99tCaptureChangeHistory/Log">5.1.=
+ Don=E2=80=99t Capture Change History/Log</h2>
+<div id=3D"expander-1890402230" class=3D"expand-container">
+<div id=3D"expander-control-1890402230" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Expand fo=
+r more details</span>
+</div>
+<div id=3D"expander-content-1890402230" class=3D"expand-content">
+<ul>
+<li><p>The change history SHOULD NOT be stored in the code itself</p></li>
+<li><p>Manually maintaining the change history in the code itself is unreli=
+able, as it doesn=E2=80=99t show the actual change that has occurred and is=
+n=E2=80=99t enforceable</p>
+<ul>
+<li><p>The change history is captured by the version control system (e.g. G=
+it) for each commit that=E2=80=99s occurred. All changes that are pushed to=
+ development and production are captured, and diffs of those changes are av=
+ailable</p></li>
+</ul></li>
+<li><p>An example of the anti-pattern that SHOULD NOT be used:</p></li>
+</ul>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence"># Create =
+by: Joe Bloggs
+# Date: 01-01-2021
+# Purpose: Eg transformation script
+
+# Change log:
+# Date: 02-01-2021
+# Change Made By: Donald Duck
+# Change Description: Small change to JSON file read in</pre>=20
+</div>
+</div>
+</div>
+</div>
+<h2 id=3D"Python-StyleGuide-5.2.Docstring">5.2. Docstring</h2>
+<p>All functions should start with a Docstring, explaining <strong>the func=
+tion</strong>, <strong>what</strong> it does and <strong>why</strong>.</p>
+<h3 id=3D"Python-StyleGuide-DocStringFormat:UsereST">DocString Format: Use =
+reST</h3>
+<p>Use the reST (restructuredText) Docstring format.</p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-informa=
+tion-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p><strong>What is the reST (restructuredText) Docstring format?</strong></=
+p>
+<p>Expand the menu below for more details.</p>
+</div>
+</div>
+<div id=3D"expander-220323655" class=3D"expand-container">
+<div id=3D"expander-control-220323655" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Click to =
+expand</span>
+</div>
+<div id=3D"expander-content-220323655" class=3D"expand-content">
+<ul>
+<li><p>One of the most prevalent Docstring formats in use today is reST (re=
+structuredText).</p></li>
+<li><p>Shown below are the main components of the reST Docstring format:</p=
+></li>
+</ul>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">"""[Summa=
+ry]
+:param [ParamName]: [ParamDescription], defaults to [DefaultParamVal]
+:type [ParamName]: [ParamType](, optional)
+...
+:raises [ErrorType]: [ErrorDescription]
+...
+:return: [ReturnDescription]
+:rtype: [ReturnType]
+"""
+</pre>=20
+</div>
+</div>
+<ul>
+<li><p>For an overview of the reST Docstring format, see <a class=3D"extern=
+al-link" data-card-appearance=3D"inline" href=3D"https://sphinx-rtd-tutoria=
+l.readthedocs.io/en/latest/docstrings.html" rel=3D"nofollow">https://sphinx=
+-rtd-tutorial.readthedocs.io/en/latest/docstrings.html</a>.</p></li>
+<li><p>The main components of the reST Docstring format are described below=
+.</p></li>
+</ul>
+</div>
+</div>
+<hr>
+<h1 id=3D"Python-StyleGuide-6.ControlStructuresandErrorHandling">6. Control=
+ Structures and Error Handling</h1>
+<h2 id=3D"Python-StyleGuide-6.1.ControlStructures">6.1. Control Structures<=
+/h2>
+<ul>
+<li><p>Use a space after commas in control structures (e.g.,<em> </em><code=
+>if</code><em>, </em><code>for</code><em>, </em><code>while</code>).</p></l=
+i>
+<li><p>Avoid unnecessary parentheses around conditions.</p></li>
+<li><p>Use a blank line before a <code>return</code><em> </em>statement if =
+it improves readability.</p></li>
+</ul>
+<h2 id=3D"Python-StyleGuide-6.2.ErrorHandling">6.2. Error Handling</h2>
+<ul>
+<li><p>Prefer specific exceptions over catching all exceptions (<code>excep=
+t Exception:</code>).</p></li>
+<li><p>Use <code>try-except-else</code> blocks when possible.</p></li>
+<li><p>Use <code>finally</code> blocks sparingly and only when necessary.</=
+p></li>
+</ul>
+<hr>
+<h1 id=3D"Python-StyleGuide-7.LintingandAuto-Formatting">7. Linting and Aut=
+o-Formatting</h1>
+<p>Standard linting and code formatting plugins can be used to maintain cod=
+e quality and standardised formatting.</p>
+<h2 id=3D"Python-StyleGuide-7.1.Linting">7.1. Linting</h2>
+<ul>
+<li><p>Code linters highlight syntactical and stylistic problems in your Py=
+thon source code, which often helps you identify and correct subtle program=
+ming errors or unconventional coding practices that can lead to errors.</p>=
+</li>
+<li><p>Code linters provide an excellent opportunity to resolve code qualit=
+y issues early and often - particularly in scenarios where it isn=E2=80=99t=
+ front of mind (e.g., during PoC/MVP development).</p></li>
+</ul>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"a39faa0d-6a04-4d14-be37-1af=
+94356e337" class=3D"confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh"><p><strong>Pros</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Cons</strong></p></th>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><p>Catches easy-to-miss errors like typos, using=
+-vars-before-assignment, etc.</p></td>
+<td class=3D"confluenceTd">
+<ul>
+<li><p>Linters aren=E2=80=99t perfect.</p></li>
+<li><p>To take advantage of it, sometimes we=E2=80=99ll need to write aroun=
+d it, suppress its warnings or fix it.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"Python-StyleGuide-RecommendedLinter:Flake8">Recommended Linter: <=
+code>Flake8</code></h3>
+<p><a class=3D"external-link" href=3D"https://pypi.org/project/flake8/" rel=
+=3D"nofollow">Flake8</a>&nbsp;is a popular approach used for linting Python=
+ code. It is a standard lint wrapper for Python, where under the hood, it r=
+uns three other tools (<a class=3D"external-link" href=3D"https://pypi.org/=
+project/pyflakes/" rel=3D"nofollow">PyFlakes</a>, <a class=3D"external-link=
+" href=3D"https://pypi.org/project/pycodestyle/" rel=3D"nofollow">pycodesty=
+le</a>, and <a class=3D"external-link" href=3D"https://pypi.org/project/mcc=
+abe/" rel=3D"nofollow">McCabe</a>) and combines their output.</p>
+<h2 id=3D"Python-StyleGuide-7.2.Auto-formattingusingBlack">7.2. Auto-format=
+ting using <a class=3D"external-link" href=3D"https://github.com/psf/black"=
+ rel=3D"nofollow">Black</a></h2>
+<ul>
+<li><p>Implementing the above styles/coding standards requires proactive ef=
+forts from end users.</p></li>
+<li><p>Many teams use autoformatters like <a class=3D"external-link" href=
+=3D"https://github.com/psf/black" rel=3D"nofollow">Black</a> to avoid argui=
+ng over formatting.</p></li>
+</ul>
+<hr>
+<h1 id=3D"Python-StyleGuide-8.GeneralGuidelines">8. General Guidelines</h1>
+<ul>
+<li><p>Use meaningful variable and function names.</p></li>
+<li><p>Avoid using mutable types as default arguments.</p></li>
+<li><p>Use list comprehensions and generator expressions for concise and re=
+adable code.</p></li>
+</ul>
+<p>Expand the menu below for examples of each:</p>
+<div id=3D"expander-1005866304" class=3D"expand-container">
+<div id=3D"expander-control-1005866304" class=3D"expand-control">
+<span class=3D"expand-control-icon"><img style=3D"vertical-align:middle;" c=
+lass=3D"expand-control-image" src=3D"62ae7df72658117c6ffa7e40d41aa3e7" widt=
+h=3D"16" height=3D"16"></span><span class=3D"expand-control-text">Click to =
+expand</span>
+</div>
+<div id=3D"expander-content-1005866304" class=3D"expand-content">
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"ca842d14-0be5-405f-b6ea-fbc=
+93eb8420b" class=3D"confluenceTable">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"numberingColumn confluenceTh"></th>
+<th class=3D"confluenceTh"><p><strong>Description</strong></p></th>
+<th class=3D"confluenceTh"><p><strong>Example</strong></p></th>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">1</td>
+<td class=3D"confluenceTd"><p>Use meaningful variable and function names.</=
+p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def load_=
+customer_data():</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def load_=
+data():</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">2</td>
+<td class=3D"confluenceTd"><p>Avoid using mutable types as default argument=
+s.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def appen=
+d_10(the_list=3DNone):
+  if the_list is None:
+    the_list =3D []
+  the_list.append(10)
+  return the_list</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">def appen=
+d_10(the_list=3D[]):
+  the_list.append(10)
+  return the_list</pre>=20
+</div>
+</div></td>
+</tr>
+<tr>
+<td class=3D"numberingColumn confluenceTd">3</td>
+<td class=3D"confluenceTd"><p>Use list comprehensions and generator express=
+ions for concise and readable code.</p></td>
+<td class=3D"confluenceTd"><p><u>Good</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">fruits =
+=3D ["apple", "banana", "cherry", "kiwi", "mango"]
+
+newlist =3D [x for x in fruits if "a" in x]
+
+print(newlist)</pre>=20
+</div>
+</div><p><u>Bad</u></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: py; gutter: false; theme: Confluence" data-theme=3D"Confluence">fruits =
+=3D ["apple", "banana", "cherry", "kiwi", "mango"]
+
+for x in fruits:
+  if "a" in x:
+    newlist.append(x)</pre>=20
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Failing all of the above, follow <a class=3D"external-link" href=3D"=
+https://pep8.org/" rel=3D"nofollow">PEP 8 guidelines</a> for conventions no=
+t covered here.</p></li>
+<li><p>For additional inspiration, refer to the <a class=3D"external-link" =
+href=3D"https://google.github.io/styleguide/pyguide.html" rel=3D"nofollow">=
+Google Python style guide</a> for great examples of do=E2=80=99s and don=E2=
+=80=99t on writing clean Python code.</p></li>
+<li><p>Remember, consistency is key when it comes to style guides. Followin=
+g the established style within a project or organisation is essential to ma=
+intain code readability and maintainability.</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_14_11894173.1687411701943
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/62ae7df72658117c6ffa7e40d41aa3e7
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAA3NCSVQICAjb4U/gAAAAFVBMVEX/
+//9wcHBwcHBwcHBwcHBwcHBwcHA3RenHAAAAB3RSTlMAZoiZzN3/SzZomQAAAAlwSFlzAAALEgAA
+CxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAUdEVYdENy
+ZWF0aW9uIFRpbWUANi8xLzEzOKlF0AAAACFJREFUCJljYCATsCgwqIAZTMnMyRAhsTABCIMxkVxT
+GQCLcwHyUKXpLgAAAABJRU5ErkJggg==
+------=_Part_14_11894173.1687411701943--
