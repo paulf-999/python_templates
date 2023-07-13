@@ -365,90 +365,90 @@ import os # standard modules
 
 - Use type declarations for method arguments and return values.
 
-<details>
-<summary>Click to expand</summary>
+    <details>
+    <summary>Click to expand</summary>
 
-Good
+    Good
 
-```python
-def get_secret_by_name(secret_name: str) -> str:
+    ```python
+    def get_secret_by_name(secret_name: str) -> str:
 
-  ...
+    ...
 
-  secret = <code here>
+    secret = <code here>
 
-  return secret
-```
+    return secret
+    ```
 
-Bad
+    Bad
 
-```python
-def get_secret_by_name(secret_name):
+    ```python
+    def get_secret_by_name(secret_name):
 
-  ...
+    ...
 
-  secret = <code here>
+    secret = <code here>
 
-  return s
-```
+    return s
+    ```
 
-</details>
+    </details>
 
 - Place default arguments at the end of the argument list.
 
-<details>
-<summary>Click to expand</summary>
+    <details>
+    <summary>Click to expand</summary>
 
-Good
+    Good
 
-```python
-def student(firstname, lastname ='Mark', standard ='Fifth'):
-```
+    ```python
+    def student(firstname, lastname ='Mark', standard ='Fifth'):
+    ```
 
-Bad
+    Bad
 
-```python
-def student(lastname ='Mark', standard ='Fifth', firstname):
-```
+    ```python
+    def student(lastname ='Mark', standard ='Fifth', firstname):
+    ```
 
-</details>
+    </details>
 
 - Define function parameters without spaces around the equals sign.
 
-<details>
-<summary>Click to expand</summary>
-Good
+    <details>
+    <summary>Click to expand</summary>
+    Good
 
-```python
-func(1, 2, axis='x', angle=90, size=450, name='foo bar')
-```
+    ```python
+    func(1, 2, axis='x', angle=90, size=450, name='foo bar')
+    ```
 
-Bad
+    Bad
 
-```python
-func(1, 2, axis = 'x', angle = 90, size = 450, name = 'foo bar')
-```
+    ```python
+    func(1, 2, axis = 'x', angle = 90, size = 450, name = 'foo bar')
+    ```
 
-</details>
+    </details>
 
 - Use a single space after the comma in function definitions.
 
-<details>
-<summary>Click to expand</summary>
+    <details>
+    <summary>Click to expand</summary>
 
-Good
+    Good
 
-```python
-func(1, 2, axis='x', angle=90, size=450, name='foo bar')
-```
+    ```python
+    func(1, 2, axis='x', angle=90, size=450, name='foo bar')
+    ```
 
-Bad
+    Bad
 
-```python
-func(1,2,axis='x',angle=90,size=450,name='foo bar')
-```
+    ```python
+    func(1,2,axis='x',angle=90,size=450,name='foo bar')
+    ```
 
-</details>
+    </details>
 
 ---
 
