@@ -22,11 +22,7 @@ Throughout the template scripts developed, the following style guide of do’s a
 
 ---
 
-> :information_source: **Summary: Use Python Linters and Automatters to Facilitate Coding Standards**
-
-- Implementing the below styles/coding standards requires proactive efforts from end users.
-- I recommend teams use linters and code autoformatters to maintain code quality and standardised formatting.
-- For more information, see <TODO - link here>
+> :information_source: **Summary: Use Python Linters and Automatters to Facilitate Coding Standards**<br/><br/>- Implementing the below styles/coding standards requires proactive efforts from end users.<br/>- I recommend teams use linters and code autoformatters to maintain code quality and standardised formatting.<br/>- For more information, see <TODO - link here>
 
 ---
 
@@ -59,6 +55,9 @@ Expand the menu below for more details.
 
 #### Case Style Specification
 
+<details>
+<summary>Expand for details</summary>
+
 | Related to                 | Naming Convention                                     | Example                          |
 |---------------------------|-------------------------------------------------------|----------------------------------|
 | 1. Module names           | `snake_case` (i.e., `lowercase_with_underscores`)         | `lowercase_with_underscores.py`    |
@@ -67,6 +66,7 @@ Expand the menu below for more details.
 | 4. Function and method names | `snake_case`                                           | `def example_function():`         |
 | 5. Variable names         | `snake_case`                                            | `working_dir = os.getcwd()`        |
 | 6. Constants              | `SCREAMING_SNAKE_CASE` (i.e., `UPPERCASE_WITH_UNDERSCORES`) | `PI = 3.14`                        |
+</details>
 
 ### 1.2. Avoid Abbreviations
 
