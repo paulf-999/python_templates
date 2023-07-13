@@ -8,124 +8,223 @@ Python template scripts I've collated over time, as described below.
 | `2_data_related_templates` | Data-related python scripts, e.g. containing standardised code for DB/API calls |
 | `3_other_templates` | Collection of templates that aren't generic or data-related! |
 
+## Python Style Guide
 
-## Python Style Guide / Coding Standards
+Throughout the template scripts developed, the following style guide of do’s and don’ts for Python development has been used, covering the following main areas:
 
-Throughout the template scripts developed, the following style guide of do’s and don’ts for Python data pipeline development has been used, covering three main areas:
-
-1. Naming conventions and standards
-2. General guidelines.
-3. Linting, autoformatting and security plugins
+1. Naming Conventions
+2. Code Layout
+3. String Formatting: Use f-strings
+4. Function and Method Definitions
+5. Comments and Docstrings
+6. Error Handling
+7. General Guidelines
 
 ---
 
-## 1. Naming conventions and standards
+> :information_source: **Summary: Use Python Linters and Automatters to Facilitate Coding Standards**
 
-### 1.1. Use the `snake_case` naming convention
+- Implementing the below styles/coding standards requires proactive efforts from end users.
+- I recommend teams use linters and code autoformatters to maintain code quality and standardised formatting.
+- For more information, see <TODO - link here>
 
-* All code (objects, variables etc) including column names and associated objects created should be named using `snake_case`
-* Snake case combines words by replacing each space with an underscore (_) and all letters are lower case, as follows:
+---
+
+## 1. Naming Conventions
+
+### 1.1. Case Styles, Per-Python Object
+
+In summary:
+
+1. Use `snake_case` for all module, package, function, and variable names.
+2. Use `CamelCase` for classes.
+3. Use `SCREAMING_SNAKE_CASE` for constants.
+
+**What is snake_case?**
+Expand the menu below for more details.
+
+<details>
+<summary>Expand for details</summary>
+
+`snake_case` combines words by replacing each space with an underscore (_), and all letters are lowercase, as follows:
 
 **Raw**: user login count
 
-**Snake case**: `user_login_count`
+**Snake case**: user_login_count
 
-* [The following link](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841) explains the differences between different case styles.
-* One of the benefits of Snake case is that many of the allowed characters are compatible across S3 and Snowflake
+- [The following link](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841) explains the differences between different case styles.
+- One of the benefits of `snake_case` is that many of the allowed characters are compatible across S3 and Snowflake.
 
-### 1.2. Naming of functions, variables and filenames
+</details>
 
-* Function names, variables and filenames should all be descriptive, eschew abbreviation
-* In particular, don’t use abbreviations that are ambiguous to readers outside your projects
-* Also don’t abbreviate by deleting letters within a word
+#### Case Style Specification
 
-### 1.3. String formatting: use f-strings
+| Related to                 | Naming Convention                                     | Example                          |
+|---------------------------|-------------------------------------------------------|----------------------------------|
+| 1. Module names           | `snake_case` (i.e., `lowercase_with_underscores`)         | `lowercase_with_underscores.py`    |
+| 2. Package names          | `snake_case`                                            | `lowercase_with_underscores`       |
+| 3. Class names            | `CamelCase`                                             | `ExampleClass`                     |
+| 4. Function and method names | `snake_case`                                           | `def example_function():`         |
+| 5. Variable names         | `snake_case`                                            | `working_dir = os.getcwd()`        |
+| 6. Constants              | `SCREAMING_SNAKE_CASE` (i.e., `UPPERCASE_WITH_UNDERSCORES`) | `PI = 3.14`                        |
 
-* `f-strings` should be used where possible, they provide a clean way to format strings
-* Avoid using `str().format`
-* Detailed examples of `f-strings` in action can be found [here](https://realpython.com/python-f-strings/).
+### 1.2. Avoid Abbreviations
 
-### 1.4. Comments and Docstrings
+- Function names, variables, and filenames should all be meaningful, descriptive, and eschew abbreviations.
 
-#### 1.4.1. Comments
+    <details>
+    <summary>For example (click to expand)</summary>
+    Good:
 
-Comments **SHOULD** detail **why** something is being done, as well as **what** is occurring.
+    ```python
+    def load_customer_data():
+    ```
 
-##### Example of *good* commenting
+    Bad:
 
-```python
-# Display Ads are not included in the Product Count due to them being…
-# This business rule was requested by the … team for these reasons …
-```
+    ```python
+    def load_data():
+    ```
 
-##### Example of *bad* commenting
+    </details>
 
-``` # Looping through list, setting Product Count to 0 where Type == ‘Display’ ```
-
-##### `#TODO` keyword
-
-* There are times when not everything can be built into a pipeline within the given time frames
-* The `#TODO` keyword **MAY** be used to help future you
-
-#### 1.4.2. Docstrings
-
-##### Description
-
-All pipelines and functions should start with a Docstring, explaining **what** the pipeline / function is, **what** it does and **why**.
-
-##### Business logic / rules
-
-* Business rules / logic should be explained at a high-level, focussing on **why** something is happening
-* This is to help data engineers who open your pipelines in 1-2 years team and try to decipher what business rules exist and why they are being applied
-* If a pipeline or transform doesn’t have any business rules, then you can leave this blank
-
-###### Example **good** business logic / rule comments
-
-```python
-
-# Product codes X, Y and Z are excluded from metric revenue as hey are considered free ads
-# Finance has requested for these to be excluded
-
-```
-
-###### Example **bad** business logic / rule comments
-
-``` # Dim abc inner joins to Dim xyz and selects all fields ```
-
-##### Parameters
-
-Parameters required by the pipeline should be listed along with a description of what they are
-
-##### Example Doc String
-
-```python
-"""
-Description:
-This pipeline is a sample pipeline, at the top of each pipeline we explain what the pipeline is and what it does
-Business rules / logic:
-Detail business logic at a high-level that might not be visible at first glance to the developer
-E.g. Test Accounts are excluded from this pipeline
-Parameters:
-input_file_raw:
-    Raw customer table
-output_file_path:
-    Output S3 file
-
-Example usage:
-    Include example usage if it is a global transform and the function can be used in multiple different ways.
-    This section is not required for local transforms.
-"""
-```
+- Don't use abbreviations that are ambiguous to readers outside your projects.
+- Don't abbreviate by deleting letters within a word.
 
 ---
 
-## 2. General guidelines
+## 2. Code Layout
 
-### 2.1. Code readability and effective white spacing
+### 2.1. General
 
-Code **MUST** be spaced logically to maintain readability.
+[PEP 8 is the official style guide for Python code](https://peps.python.org/pep-0008/). It provides a set of conventions for writing readable and consistent code. As such, we should use its main high-level code layout recommendations, listed below:
 
-#### Example of **good** code readability
+- Using four spaces for indentation
+- Limiting lines to 79 characters
+- Using blank lines to separate functions and classes
+
+Expand the menu below for further details on these (including examples).
+
+<details>
+<summary>Example (click to expand)</summary>
+
+#### Indentation
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Use four spaces for indentation (i.e., avoid tabs.)                     | N/A                                                                 |
+
+#### Line length
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Limit lines to a maximum of 79 characters.                              | N/A                                                                 |
+
+#### Whitespace: imports, classes, and functions
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Use a newline after imports and before the class or function definition. | Expand menu below                                                |
+
+<details>
+<summary>Example (click to expand)</summary>
+
+Good
+
+```python
+import os
+...
+
+from requests import HTTPError
+
+
+def example_function():
+
+```
+
+Bad
+
+```python
+import os
+...
+
+from requests import HTTPError
+def example_function():
+
+```
+
+</details>
+
+#### Whitespace: methods and classes
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Separate methods and classes with two blank lines.                      | Expand menu below                                                 |
+
+<details>
+<summary>Example (click to expand)</summary>
+
+Good
+
+```python
+
+import os
+...
+
+from requests import HTTPError
+
+
+def example_function():
+
+```
+
+Bad
+
+```python
+
+import os
+...
+
+from requests import HTTPError
+def example_function():
+
+```
+
+</details>
+
+#### Whitespace: operators and commas
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Use a single space around operators and after commas.                   | Expand menu below                                                 |
+
+<details>
+<summary>Example (click to expand)</summary>
+
+Good
+
+```python
+return sharepoint.get_site(host, 'sites/' + site_name.replace(" ", ""))
+```
+
+Bad
+
+```python
+return sharepoint.get_site(host,'sites/'+site_name.replace(" ", ""))
+```
+
+</details>
+
+#### Whitespace: code readability
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Code MUST be spaced logically to maintain readability.                  | Expand menu below                                                 |
+
+<details>
+<summary>Example (click to expand)</summary>
+
+Good
 
 ```python
 # Pipeline parameters
@@ -136,7 +235,7 @@ target_bucket = self.s3_bucket_target
 logging.info(f”target_bucket = {target_bucket}”)
 ```
 
-#### Example of bad **code** readability
+Bad
 
 ```python
 # Pipeline parameters
@@ -146,65 +245,289 @@ target_bucket = self.s3_bucket_target
 logging.info(f”target_bucket = {target_bucket}”)
 ```
 
-### 2.2. Don’t capture change history / log
+</details>
+</details>
 
-* The change history of a data pipeline SHOULD NOT be stored in the code itself
-* Manually maintaining the change history in the code itself is unreliable, as it doesn’t show the actual change that has occurred and isn’t enforceable
-  * The change history is captured by the version control system (e.g. Git) for each commit that’s occurred. All changes that are pushed to development and production are captured and diffs of those changes are available
-* An example of the anti-pattern that SHOULD NOT be used:
+### 2.2. Imports
+
+- Import modules on separate lines.
+- Use absolute imports whenever possible.
+- Avoid wildcard imports (`from module import *`).
+- Place imports in the following order: standard library modules, third-party modules, and local modules.
+
+For further details (with examples), expand the menu below.
+
+<details>
+<summary>Click to expand</summary>
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Import modules on separate lines.                  | Expand menu below                                                 |
+
+<details>
+<summary>Click to expand</summary>
+
+Good
 
 ```python
-# Create by: Joe Bloggs
+import os
+import re
+```
+
+Bad
+
+```python
+import os, re
+```
+
+</details>
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Use absolute imports whenever possible.                  | Expand menu below                                                 |
+
+<details>
+<summary>Click to expand</summary>
+
+Good
+
+```python
+from package2.subpackage1.module5 import function2
+```
+
+Bad
+
+```python
+from .subpackage1.module5 import function2
+```
+
+</details>
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Avoid wildcard imports (`from module import *`)                  | Expand menu below                                                 |
+
+<details>
+<summary>Click to expand</summary>
+
+Good
+
+```python
+from math import ceil
+```
+
+Bad
+
+```python
+from math import *
+```
+
+</details>
+
+| Description                                                             | Example                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------|
+| Place imports in the following order:<br/>1. standard library modules,<br/>2. third-party modules,<br/>3. and local modules.| Expand menu below                                                 |
+
+<details>
+<summary>Click to expand</summary>
+
+Good
+
+```python
+import os # standard modules
+import boto3 # third-party modules
+import my_local_module # local modules
+```
+
+Bad
+
+```python
+import boto3 # third-party modules
+import my_local_module # local modules
+import os # standard modules
+```
+
+</details>
+
+</details>
+
+---
+
+## 3. String Formatting: Use `f-strings`
+
+- `f-strings` should be used where possible. They provide a clean way to format strings.
+- Avoid using `str().format`.
+- Detailed examples of `f-strings` in action can be found [here](https://realpython.com/python-f-strings/).
+
+---
+
+## 4. Function and Method Definitions
+
+- Use type declarations for method arguments and return values.
+
+<details>
+<summary>Click to expand</summary>
+
+Good
+
+```python
+def get_secret_by_name(secret_name: str) -> str:
+
+  ...
+
+  secret = <code here>
+
+  return secret
+```
+
+Bad
+
+```python
+def get_secret_by_name(secret_name):
+
+  ...
+
+  secret = <code here>
+
+  return s
+```
+
+</details>
+
+- Place default arguments at the end of the argument list.
+
+<details>
+<summary>Click to expand</summary>
+
+Good
+
+```python
+def student(firstname, lastname ='Mark', standard ='Fifth'):
+```
+
+Bad
+
+```python
+def student(lastname ='Mark', standard ='Fifth', firstname):
+```
+
+</details>
+
+- Define function parameters without spaces around the equals sign.
+
+<details>
+<summary>Click to expand</summary>
+Good
+
+```python
+func(1, 2, axis='x', angle=90, size=450, name='foo bar')
+```
+
+Bad
+
+```python
+func(1, 2, axis = 'x', angle = 90, size = 450, name = 'foo bar')
+```
+
+</details>
+
+- Use a single space after the comma in function definitions.
+
+<details>
+<summary>Click to expand</summary>
+
+Good
+
+```python
+func(1, 2, axis='x', angle=90, size=450, name='foo bar')
+```
+
+Bad
+
+```python
+func(1,2,axis='x',angle=90,size=450,name='foo bar')
+```
+
+</details>
+
+---
+
+## 5. Comments and Docstrings
+
+### 5.1. Comments
+
+- Use inline comments sparingly and keep them concise.
+- Use docstrings to document modules, classes, methods, and functions.
+- Write clear, self-explanatory code and minimize the need for comments.
+
+#### Don't Capture Change History/Log
+
+<details>
+<summary>Expand for more details</summary>
+
+- The change history SHOULD NOT be stored in the code itself.
+- Manually maintaining the change history in the code itself is unreliable, as it doesn't show the actual change that has occurred and isn't enforceable.
+  - The change history is captured by the version control system (e.g., Git) for each commit that's occurred. All changes that are pushed to development and production are captured, and diffs between those changes are available.
+- An example of the anti-pattern that SHOULD NOT be used:
+
+```python
+# Created by: Joe Bloggs
 # Date: 01-01-2021
 # Purpose: Eg transformation script
 
-# Change log:
+# Change log
 # Date: 02-01-2021
 # Change Made By: Donald Duck
 # Change Description: Small change to JSON file read in
 ```
 
-### 2.3. Style guide decisions
+</details>
 
-Consider reading the [Google Python style guide](https://google.github.io/styleguide/pyguide.html), it gives great examples with do’s and don’t on writing clean code.
+### 5.2. Docstring
+
+All functions should start with a Docstring, explaining **the function, what it does, and why**.
+
+#### DocString Format: Use reST
+
+Use the reST (restructuredText) Docstring format.
+
+**What is the reST (restructuredText) Docstring format?**
+
+Expand the menu below for more details.
+
+<details>
+<summary>Click to expand</summary>
+One of the most prevalent Docstring formats today is reST (restructuredText).
+Shown below are the main components of the reST Docstring format:
+
+```python
+"""[Summary]
+:param [ParamName]: [ParamDescription], defaults to [DefaultParamVal]
+:type [ParamName]: [ParamType](, optional)
+...
+:raises [ErrorType]: [ErrorDescription]
+...
+:return: [ReturnDescription]
+:rtype: [ReturnType]
+"""
+```
+
+- For an overview of the reST Docstring format, see here.
+- The main components of the reST Docstring format are described below.
+
+</details>
 
 ---
 
-## 3. Linting, autoformatting and security plugins
+## 6. Error Handling
 
-* Standard linting and code formatting plugins can be used to maintain code quality and standardised formatting
-* Pipelines should all have ‘problems’ identified by the plugins resolved prior to deployment to development or production systems
-* Code not meeting these standards will be rejected by the CICD pipeline and the build will fail
+- Prefer specific exceptions over catching all exceptions (`except Exception:`).
+- Use `try-except-else` blocks when possible.
+- Use `finally` blocks sparingly and only when necessary.
 
-### 3.1.Setup Instructions (for VSCode)
+## 7. General Guidelines
 
-#### 3.1.1. VSCode Extensions
-
-Install the following VSCode extensions (plugins):
-
-* Docker
-* Bracket Pair Colorizer 2
-
-#### 3.1.2. Linting, Security and Autoformatting Plugin Settings
-
-* Within VSCode, go to Settings -> Open Settings (JSON) – Icon Top Right
-* From there, add the following additional settings:
-
-```bash
-"python.linting.flake8Enabled": true,
-"python.linting.banditEnabled": true,
-"python.linting.pylintEnabled": false,
-"python.linting.flake8Args": [
-    "--extend-ignore=F401"
-],
-"files.trimTrailingWhitespace": true,
-"python.formatting.provider": "black",
-"python.formatting.blackArgs": [
-    "--line-length",
-    "200"
-],
-"python.formatting.blackPath": "black",
-"[python]": {
-    "editor.formatOnSave": true,
-}
-```
+- Failing all of the above, [follow the PEP 8 guidelines](https://peps.python.org/pep-0008/) for conventions not covered here.
+- For additional inspiration, refer to the [Google Python style guide](https://google.github.io/styleguide/pyguide.html) for great examples of do's and don'ts on writing clean Python code.
+- Remember, consistency is key when it comes to style guides. Following the established style within a project or organization is essential to maintain code readability and maintainability.
+cd
