@@ -46,7 +46,6 @@ def execute_snowflake_command(conn, sql_command, query_result_str=""):
         query_results = cursor.fetchall()
 
         # store query_results in a concatenated string
-
         if query_results:
             query_result_str = ", ".join(str(row) for row in query_results[0])
             logger.info(query_result_str)
@@ -98,7 +97,7 @@ def validate_env_vars(required_env_vars):
 def validate_input_args(args):
     """Validate that an input arg has been provided"""
 
-    if not args.sql_command and not args.sql_file:
+    if not args.sql_query and not args.sql_file:
         logger.error("Error: You must provide either --sql-command or --sql-file.")
         sys.exit(1)
 
@@ -115,12 +114,13 @@ def main(args):
 
         # Store the Snowflake connection parameters from environment variables
         conn_params = {
+            "account": os.getenv("SNOWFLAKE_ACCOUNT"),
             "user": os.getenv("SNOWFLAKE_USER"),
             "password": os.getenv("SNOWFLAKE_PASSWORD"),
-            "account": os.getenv("SNOWFLAKE_ACCOUNT"),
-            "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
             "database": os.getenv("SNOWFLAKE_DATABASE"),
             "schema": os.getenv("SNOWFLAKE_SCHEMA"),
+            "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
+            "role": os.getenv("SNOWFLAKE_ROLE"),
         }
 
         # If a SQL file has been passed in, assign it to the var sql_command
@@ -129,13 +129,13 @@ def main(args):
                 sql_command = file.read()
         else:
             # else assign the var sql_command the value of the input SQL statement
-            sql_command = args.sql_command
+            sql_command = args.sql_query
 
         # Connect to Snowflake DB
         conn = create_snowflake_connection(conn_params)
 
         # Execute the Snowflake command
-        query_result_str = execute_snowflake_command(conn, sql_command)
+        query_result_str = execute_snowflake_command(conn, sql_command)  # noqa
 
     except Exception as e:
         logger.exception("An unexpected error occurred: %s", e)
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     """This is executed when run from the command line"""
 
     parser = argparse.ArgumentParser(description="Execute a Snowflake command.")
-    parser.add_argument("--sql-command", help="Snowflake SQL command to execute")
+    parser.add_argument("--sql-query", help="Snowflake SQL command to execute")
     parser.add_argument("--sql-file", help="Path to a .sql file containing the SQL command")
     args = parser.parse_args()
     main(args)
