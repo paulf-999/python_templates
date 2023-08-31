@@ -1,122 +1,152 @@
-#!/usr/bin/env python
-import logging
+#!/usr/bin/env python3
+"""
+Description: Executes a Snowflake command using the snowflake-connector-python library.
+Date: 2023-08-30
+"""
+
+__author__ = "Paul Fry"
+__version__ = "1.0"
+
 import os
-
+import sys
+import argparse
+import logging
 import snowflake.connector
-import yaml
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives import serialization
-from snowflake.connector.errors import DatabaseError
-from snowflake.connector.errors import ProgrammingError
+from dotenv import load_dotenv
 
-# Set up a specific logger with our desired output level
-logging.basicConfig(format='%(message)s')
-logger = logging.getLogger('application_logger')
+# Load environment variables from .env file
+load_dotenv()
+
+# Set up logging
+logging.basicConfig(format="%(message)s")
+logger = logging.getLogger("application_logger")
 logger.setLevel(logging.INFO)
 
-
-def get_sf_conn_params():
-    """get snowflake db connections params from input config"""
-
-    # store the credentials in a py dictionary
-    sf_conn_details = {}
-
-    with open(os.path.join(os.getcwd(), 'ip', 'config_mine.yaml')) as ip_yml:
-        data = yaml.safe_load(ip_yml)
-
-    sf_conn_details['sf_username'] = data['db_connection_params']['snowflake_username']
-    sf_conn_details['sf_pass'] = data['db_connection_params']['snowflake_pass']
-    # sf_conn_details["sf_p8_key_path"] = data['db_connection_params']['snowflake_p8_key']
-    # sf_conn_details["sf_p8_key_passphrase"] = data['db_connection_params']['snowflake_p8_key_passphrase']
-    sf_conn_details['sf_account'] = data['db_connection_params']['snowflake_account']
-    sf_conn_details['sf_wh'] = data['db_connection_params']['snowflake_wh']
-    sf_conn_details['sf_role'] = data['db_connection_params']['snowflake_role']
-    sf_conn_details['sf_db'] = data['db_connection_params']['snowflake_db']
-    sf_conn_details['sf_db_schema'] = data['db_connection_params']['snowflake_db_schema']
-
-    return sf_conn_details
+# Constants
+REQUIRED_ENV_VARS = [
+    "SNOWFLAKE_USER",
+    "SNOWFLAKE_PASSWORD",
+    "SNOWFLAKE_ACCOUNT",
+    "SNOWFLAKE_WAREHOUSE",
+    "SNOWFLAKE_DATABASE",
+    "SNOWFLAKE_SCHEMA",
+]
 
 
-def create_snowflake_connection(conn='', sf_conn_details=get_sf_conn_params()):
-    """create a sf connection instance"""
+def execute_snowflake_command(conn, sql_command, query_result_str=""):
+    """Execute Snowflake command(s)"""
+    try:
+        # Create a cursor object
+        cursor = conn.cursor()
 
-    # if a p8 key is used, render the key as required
-    # pkb = private_key_bytes(sf_conn_details["sf_p8_key_path"], sf_conn_details["sf_p8_key_passphrase"])
+        # Execute the SQL command
+        cursor.execute(sql_command)
+
+        # Fetch and print the results
+        query_results = cursor.fetchall()
+
+        # store query_results in a concatenated string
+
+        if query_results:
+            query_result_str = ", ".join(str(row) for row in query_results[0])
+            logger.info(query_result_str)
+
+        # Close the cursor and connection
+        cursor.close()
+        conn.close()
+
+        return query_result_str
+
+    except Exception as e:
+        logging.exception("An error occurred while executing Snowflake command: %s", e)
+        sys.exit(1)
+
+
+def create_snowflake_connection(conn_params):
+    """Create a Snowflake connection instance."""
 
     try:
-        conn = snowflake.connector.connect(
-            user=sf_conn_details['sf_username'],
-            password=sf_conn_details['sf_pass'],
-            # private_key=sf_conn_details["sf_p8_key_path"],
-            account=sf_conn_details['sf_account'],
-            warehouse=sf_conn_details['sf_wh'],
-            role=sf_conn_details['sf_role'],
-            database=sf_conn_details['sf_db'],
-            schema=sf_conn_details['sf_db_schema'],
-        )
-
-    except ProgrammingError as e:
+        # Connect to Snowflake
+        conn = snowflake.connector.connect(**conn_params)
+    except (
+        snowflake.connector.errors.ProgrammingError,
+        snowflake.connector.errors.DatabaseError,
+    ) as e:
         if e.errno == 251005:
-            print(f"\nERROR: Invalid username/password.\n\nMessage: '{e.msg}'.")
-            raise (SystemExit)
+            message = f"Invalid username/password. Message: '{e.msg}'."
+        elif e.errno == 250001:
+            message = f"Invalid Snowflake account name provided. Message: '{e.msg}'."
         else:
-            print(f'Error {e.errno} ({e.sqlstate}): ({e.sfqid})')
-            raise (SystemExit)
-
-    except DatabaseError as db_e:
-        if db_e.errno == 250001:
-            print(f"\nERROR: Invaid Snowflake account name provided.\n\nMessage: '{db_e.msg}'.")
-            raise (SystemExit)
-        else:
-            print(f'Error {db_e.errno} ({db_e.sqlstate}): ({db_e.sfqid})')
-            raise (SystemExit)
+            message = f"Error {e.errno} ({e.sqlstate}): ({e.sfqid})"
+        logger.error(f"\nERROR: {message}\n")
+        sys.exit(1)
 
     return conn
 
 
-def snowflake_query(query, sf_query_op=''):
-    """Connect to SF DB & run query"""
+def validate_env_vars(required_env_vars):
+    """Verify whether the required environment variables exist."""
 
-    # establish a SF connection
-    conn = create_snowflake_connection()
+    missing_env_vars = [var for var in required_env_vars if os.getenv(var) is None]
+    if missing_env_vars:
+        logger.error("\nError: The following environment variables are missing:\n")
+        for var in missing_env_vars:
+            logger.error(var)
+        exit(1)
 
-    cursor = conn.cursor()
+
+def validate_input_args(args):
+    """Validate that an input arg has been provided"""
+
+    if not args.sql_command and not args.sql_file:
+        logger.error("Error: You must provide either --sql-command or --sql-file.")
+        sys.exit(1)
+
+
+def main(args):
+    """Main entry point of the script."""
 
     try:
-        cursor.execute(query)
-        query_result = cursor.fetchall()
-        logger.debug(f'query_result = {query_result}')
-        for tuple_result in query_result:
+        # Validate that an input arg has been provided
+        validate_input_args(args)
 
-            for column in tuple_result:
-                sf_query_op += f'{column};'
-            sf_query_op += '\n'
-    finally:
-        cursor.close()
-    conn.close()
+        # Verify whether the required environment variables exist
+        validate_env_vars(REQUIRED_ENV_VARS)
 
-    return sf_query_op
+        # Store the Snowflake connection parameters from environment variables
+        conn_params = {
+            "user": os.getenv("SNOWFLAKE_USER"),
+            "password": os.getenv("SNOWFLAKE_PASSWORD"),
+            "account": os.getenv("SNOWFLAKE_ACCOUNT"),
+            "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
+            "database": os.getenv("SNOWFLAKE_DATABASE"),
+            "schema": os.getenv("SNOWFLAKE_SCHEMA"),
+        }
+
+        # If a SQL file has been passed in, assign it to the var sql_command
+        if args.sql_file:
+            with open(args.sql_file) as file:
+                sql_command = file.read()
+        else:
+            # else assign the var sql_command the value of the input SQL statement
+            sql_command = args.sql_command
+
+        # Connect to Snowflake DB
+        conn = create_snowflake_connection(conn_params)
+
+        # Execute the Snowflake command
+        query_result_str = execute_snowflake_command(conn, sql_command)
+
+    except Exception as e:
+        logger.exception("An unexpected error occurred: %s", e)
+        sys.exit(1)
 
 
-def private_key_bytes(p8_key_path, p8_passphrase):
-    """render private key for snowflake connection"""
-    with open(p8_key_path, 'rb') as key:
-        p_key = serialization.load_pem_private_key(
-            key.read(),
-            p8_passphrase,
-            backend=default_backend()
-        )
-
-    return p_key.private_bytes(
-        encoding=serialization.Encoding.DER,
-        format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption()
-    )
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     """This is executed when run from the command line"""
 
-    sf_query_op = snowflake_query(query='SELECT current_version();')
-
-    logger.info(f"sf_query_op = {sf_query_op}")
+    parser = argparse.ArgumentParser(description="Execute a Snowflake command.")
+    parser.add_argument("--sql-command", help="Snowflake SQL command to execute")
+    parser.add_argument("--sql-file", help="Path to a .sql file containing the SQL command")
+    args = parser.parse_args()
+    main(args)
