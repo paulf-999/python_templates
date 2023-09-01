@@ -33,12 +33,9 @@ REQUIRED_ENV_VARS = [
 ]
 
 
-def execute_snowflake_command(conn, sql_command, query_result_str=""):
+def execute_snowflake_command(cursor, sql_command, query_result_str=""):
     """Execute Snowflake command(s)"""
     try:
-        # Create a cursor object
-        cursor = conn.cursor()
-
         # Execute the SQL command
         cursor.execute(sql_command)
 
@@ -50,14 +47,33 @@ def execute_snowflake_command(conn, sql_command, query_result_str=""):
             query_result_str = ", ".join(str(row) for row in query_results[0])
             logger.info(query_result_str)
 
-        # Close the cursor and connection
-        cursor.close()
-        conn.close()
-
         return query_result_str
 
     except Exception as e:
         logging.exception("An error occurred while executing Snowflake command: %s", e)
+        sys.exit(1)
+
+
+def execute_sql_from_file(conn, sql_file):
+    """Execute SQL statements from an input SQL file."""
+
+    try:
+        with open(sql_file) as file:
+            sql_commands = file.read()
+
+        # Split the SQL commands based on the delimiter (e.g., semicolon)
+        sql_commands_list = sql_commands.split(";")
+
+        with conn.cursor() as cursor:
+            for sql_command in sql_commands_list:
+                sql_command = sql_command.strip()  # Remove leading/trailing whitespace
+
+                # Skip empty statements and comments
+                if sql_command and not sql_command.startswith("--"):
+                    execute_snowflake_command(cursor, sql_command)
+
+    except Exception as e:
+        logging.exception("An error occurred while executing SQL from file: %s", e)
         sys.exit(1)
 
 
@@ -123,19 +139,18 @@ def main(args):
             "role": os.getenv("SNOWFLAKE_ROLE"),
         }
 
-        # If a SQL file has been passed in, assign it to the var sql_command
-        if args.sql_file:
-            with open(args.sql_file) as file:
-                sql_command = file.read()
-        else:
-            # else assign the var sql_command the value of the input SQL statement
-            sql_command = args.sql_query
-
         # Connect to Snowflake DB
-        conn = create_snowflake_connection(conn_params)
+        with create_snowflake_connection(conn_params) as conn:
+            # If a SQL file has been passed in, we need to split the SQL commands by semicolon
+            if args.sql_file:
+                execute_sql_from_file(conn, args.sql_file)
+            else:
+                # else assign the var sql_command the value of the input SQL statement
+                sql_command = args.sql_query
 
-        # Execute the Snowflake command
-        query_result_str = execute_snowflake_command(conn, sql_command)  # noqa
+                # Execute the Snowflake command
+                with conn.cursor() as cursor:
+                    execute_snowflake_command(cursor, sql_command)
 
     except Exception as e:
         logger.exception("An unexpected error occurred: %s", e)
