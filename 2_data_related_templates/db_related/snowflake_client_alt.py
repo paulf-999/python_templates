@@ -32,7 +32,7 @@ def get_sf_conn_params():
     # store the credentials in a py dictionary
     sf_conn_details = {}
 
-    with open(os.path.join(os.getcwd(), "ip", "config_mine.yaml")) as ip_yml:
+    with open(os.path.join(os.getcwd(), "ip", "config_mine.yaml"), encoding="utf-8") as ip_yml:
         data = yaml.safe_load(ip_yml)
 
     sf_conn_details["sf_username"] = data["db_connection_params"]["snowflake_username"]
