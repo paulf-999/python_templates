@@ -25,6 +25,9 @@ Choose one:
 
 ## :snake: Python Standards Checklist
 
+<details>
+<summary>View Checklist</summary>
+
 1. **Coding Standards:**
 
     Verify adherence to [Payroc's Python coding standards](https://payroc.atlassian.net/wiki/spaces/TEC/pages/2544467994/Python+-+Standard+-+Style+Guide+Coding+Standards), in particular:
@@ -52,6 +55,8 @@ Choose one:
    - [ ] Validate the presence of README updates, if applicable.
    - [ ] Ensure documentation of new dependencies or usage instructions.
    - [ ] Look for inline comments explaining complex logic or design decisions.
+
+</details>
 
 ## :bulb: Best Practices
 
