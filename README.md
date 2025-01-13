@@ -1,6 +1,6 @@
 # Python Templates
 
-Python template scripts I've collated over time, as described below.
+Python template scripts I've collated over time.
 
 ## Python Style Guide
 
