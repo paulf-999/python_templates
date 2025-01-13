@@ -21,6 +21,18 @@ class VariableUtils:
     def __init__(self):
         self.logger = LoggingUtils.configure_logging(self)
 
+    def validate_env_vars(self, REQUIRED_ENV_VARS):
+        """Verify whether the required environment variables exist."""
+
+        # Check if any required environment variables are missing or empty
+        missing_or_empty_env_vars = [var for var in REQUIRED_ENV_VARS if not os.getenv(var)]
+
+        # Log missing or empty environment variables as errors
+        if missing_or_empty_env_vars:
+            self.logger.error("\nError: The following environment variables are missing:\n")
+            for var in missing_or_empty_env_vars:
+                self.logger.error(var)
+
     def load_ip_params_from_config(self, config_file_path):
         """Load variables from a config.yaml into ip_params dictionary.
         Args:
