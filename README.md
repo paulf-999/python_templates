@@ -16,10 +16,6 @@ Throughout the template scripts developed, the following style guide of do’s a
 
 ---
 
-> :information_source: **Summary: Use Python Linters and Automatters to Facilitate Coding Standards**<br/><br/>- Implementing the below styles/coding standards requires proactive efforts from end users.<br/>- I recommend teams use linters and code autoformatters to maintain code quality and standardised formatting.<br/>- For more information, see <TODO - link here>
-
----
-
 ## 1. Naming Conventions
 
 ### 1.1. Case Styles, Per-Python Object
