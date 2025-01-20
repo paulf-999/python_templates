@@ -10,15 +10,13 @@ __version__ = "1.0"
 
 import os
 import sys
-from dotenv import load_dotenv
+
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
+from dotenv import load_dotenv
 
-# Append src/py/shared/ to sys.path for class and function imports
-shared_py_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-sys.path.append(shared_py_dir_path)
-
-from core.logging_utils import LoggingUtils
+# Custom modules
+from python_utils.classes.core.logging_utils import LoggingUtils
 
 # Initialize logging utilities
 logging_utils = LoggingUtils()

@@ -7,9 +7,10 @@ Date created: 2025-01-13
 __author__ = "Paul Fry"
 __version__ = "1.0"
 
-import logging
-import colorlog
 import inspect
+import logging
+
+import colorlog
 
 
 class LoggingUtils:
@@ -63,3 +64,17 @@ class LoggingUtils:
 
         # Log the error message along with the line number
         logger.error(error_message)
+
+    def log_header(self, message, char="-", length=77):
+        """Log a formatted header with a specified character.
+
+        Args:
+            message (str): The header message to log.
+            char (str): The character to use for the border.
+            length (int): The length of the border.
+        """
+
+        border = char * length
+        self.logger.info(f"\n{border}")
+        self.logger.info(f"{message}")
+        self.logger.info(f"{border}\n")

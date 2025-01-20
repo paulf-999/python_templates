@@ -8,23 +8,23 @@ __author__ = "Paul Fry"
 __version__ = "1.0"
 
 import os
+
 import pandas as pd
 from logging_utils import LoggingUtils
 
 logging_utils = LoggingUtils()
+
+logger = logging_utils.configure_logging()  # Set up logging
 
 # Store the name of this py script as a var
 py_script_name = os.path.basename(__file__)
 
 
 class FileUtils:
-    def __init__(self):
-        self.logger = LoggingUtils.configure_logging(self)
-
     def create_directory_if_not_exists(self, directory):
         """Create a directory if it doesn't exist."""
 
-        self.logger.debug("Function called 'FileUtils.create_directory_if_not_exists()'")
+        logger.debug("Function called 'FileUtils.create_directory_if_not_exists()'")
 
         # convert the directory var to lowercase
         directory = directory.lower()
@@ -32,15 +32,15 @@ class FileUtils:
         # create the target directory, if it doesn't exist
         if not os.path.exists(directory):
             os.makedirs(directory)
-            self.logger.debug(f"Directory created: {directory}")
+            logger.debug(f"Directory created: {directory}")
 
         else:
-            self.logger.debug(f"Directory already exists: {directory}")
+            logger.debug(f"Directory already exists: {directory}")
 
     def read_excel_file(self, excel_sheet, IP_EXCEL_FILE, header_row):
         """Read data from an Excel file and return a DataFrame."""
 
-        self.logger.debug("Function called 'FileUtils.read_excel_file()'")
+        logger.debug("Function called 'FileUtils.read_excel_file()'")
 
         try:
             if not os.path.exists(IP_EXCEL_FILE):
@@ -51,7 +51,7 @@ class FileUtils:
                 pd.read_excel(IP_EXCEL_FILE, sheet_name=excel_sheet, header=header_row).fillna("").reset_index()  # noqa
             )
 
-            self.logger.debug(f"Read Excel file '{IP_EXCEL_FILE}' for sheet '{excel_sheet}'.")  # noqa
+            logger.debug(f"Read Excel file '{IP_EXCEL_FILE}' for sheet '{excel_sheet}'.")  # noqa
 
             return df
 
@@ -72,7 +72,7 @@ class FileUtils:
         :return: Boolean indicating whether the file should be overwritten.
         """
 
-        self.logger.debug("Function called 'FileUtils.prompt_for_file_overwrite()'")  # noqa
+        logger.debug("Function called 'FileUtils.prompt_for_file_overwrite()'")  # noqa
 
         # Flag to track whether any files are being overwritten
         overwrite_file = False
@@ -93,17 +93,17 @@ class FileUtils:
 
                 if user_input == "yes":
                     overwrite_file = True
-                    self.logger.debug("\nOverwriting existing file.")
+                    logger.debug("\nOverwriting existing file.")
 
                 else:
-                    self.logger.info("\nFile not overwritten. Skipping...")
+                    logger.info("\nFile not overwritten. Skipping...")
                     return False
 
             # If the '-y' argument is provided, mark the action as logged
             elif not hasattr(args, "yes_logged") or not args.yes_logged:
 
                 overwrite_file = True
-                self.logger.info("Overwriting existing files due to command-line '-y' argument.\n")
+                logger.info("Overwriting existing files due to command-line '-y' argument.\n")
                 args.yes_logged = True
 
         else:
@@ -118,7 +118,7 @@ class FileUtils:
     def find_project_root(self, PROJECT_DIR):
         """Find the project root directory."""
 
-        self.logger.debug("Function called 'find_project_root()'")
+        logger.debug("Function called 'find_project_root()'")
 
         # Get the directory of the current script
         current_dir = os.path.abspath(os.path.dirname(__file__))

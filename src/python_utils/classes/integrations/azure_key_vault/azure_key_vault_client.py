@@ -20,14 +20,12 @@ __version__ = "1.0"
 
 import os
 import sys
-from dotenv import load_dotenv
+
 import azure_key_vault_helpers as kv_helpers
+from dotenv import load_dotenv
 
-# Append src/py/shared/ to sys.path so that we can import it's classes & functions
-shared_py_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-sys.path.append(shared_py_dir_path)
-
-from core.logging_utils import LoggingUtils
+# custom modules
+from python_utils.classes.core.logging_utils import LoggingUtils
 from validate_inputs import InputValidator
 
 validator_utils = InputValidator()
