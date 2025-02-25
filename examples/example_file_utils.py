@@ -12,12 +12,6 @@ import os
 from python_utils.classes.core.file_utils import FileUtils
 from python_utils.classes.core.logging_utils import LoggingUtils
 
-# The `logging_utils` variable is being used to create an instance of the
-# `LoggingUtils` class, which is then used to configure logging settings. The
-# `configure_logging()` method from the `LoggingUtils` class is called to set up
-# the logging configuration, including log formatting, log level, and log
-# handlers. This allows for consistent and structured logging throughout the
-# script.
 logging_utils = LoggingUtils()
 logger = logging_utils.configure_logging()
 
