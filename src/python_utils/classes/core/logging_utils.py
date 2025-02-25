@@ -16,15 +16,15 @@ import colorlog
 class LoggingUtils:
     def __init__(self):
         self.logger = self.configure_logging()
+        self.set_log_level(logging.INFO)  # Set default log level to INFO
 
-    def configure_logging(self, log_level=logging.DEBUG):
+    def configure_logging(self):
         """Set up logging with set level & coloured formatting"""
 
         logger = logging.getLogger("application_logger")
 
         # Prevent adding duplicate handlers
         if not logger.handlers:
-            logger.setLevel(log_level)
             handler = colorlog.StreamHandler()
             # add colour formatting to the logger
             handler.setFormatter(
@@ -42,6 +42,13 @@ class LoggingUtils:
             logger.addHandler(handler)
 
         return logger
+
+    def set_log_level(self, log_level=logging.INFO):
+        """Set the log level for the logger and its handlers"""
+
+        self.logger.setLevel(log_level)
+        for handler in self.logger.handlers:
+            handler.setLevel(log_level)
 
     def log_error(self, message, script_name, function_name, error):
         """Log an error message along with script name, function name, and error details."""
@@ -62,16 +69,22 @@ class LoggingUtils:
         # Log the error message along with the line number
         self.logger.error(error_message)
 
-    def log_header(self, message, char="-", length=77):
+    def log_header(self, message, char="-", length=77, level=logging.INFO):
         """Log a formatted header with a specified character.
 
         Args:
             message (str): The header message to log.
             char (str): The character to use for the border.
             length (int): The length of the border.
+            level (int): The logging level to use for the header.
         """
 
         border = char * length
-        self.logger.info(f"\n{border}")
-        self.logger.info(f"{message}")
-        self.logger.info(f"{border}\n")
+        if level == logging.DEBUG:
+            self.logger.debug(f"\n{border}")
+            self.logger.debug(f"# {message}")
+            self.logger.debug(f"{border}\n")
+        else:
+            self.logger.info(f"\n{border}")
+            self.logger.info(f"# {message}")
+            self.logger.info(f"{border}\n")

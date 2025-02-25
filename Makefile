@@ -31,7 +31,7 @@ run:
 
 test:
 	@echo "${INFO}\nCalled makefile target 'test'. Perform any required tests.${COLOUR_OFF}\n"
-	@pytest
+	@rm -rf .pytest_cache && pytest
 
 clean:
 	@echo "${INFO}\nCalled makefile target 'clean'. Restoring the repository to its initial state.${COLOUR_OFF}\n"
