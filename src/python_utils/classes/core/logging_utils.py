@@ -12,6 +12,12 @@ import logging
 
 import colorlog
 
+# Define new log levels VERBOSE and TRACE
+VERBOSE_LEVEL_NUM = 15
+TRACE_LEVEL_NUM = 5
+logging.addLevelName(VERBOSE_LEVEL_NUM, "VERBOSE")
+logging.addLevelName(TRACE_LEVEL_NUM, "TRACE")
+
 
 class LoggingUtils:
     def __init__(self):
@@ -31,6 +37,8 @@ class LoggingUtils:
                 colorlog.ColoredFormatter(
                     "%(log_color)s%(message)s",
                     log_colors={
+                        "TRACE": "blue",
+                        "VERBOSE": "purple",
                         "DEBUG": "green",
                         "INFO": "cyan",
                         "WARNING": "yellow",
@@ -80,7 +88,15 @@ class LoggingUtils:
         """
 
         border = char * length
-        if level == logging.DEBUG:
+        if level == TRACE_LEVEL_NUM:
+            self.trace(f"\n{border}")
+            self.trace(f"# {message}")
+            self.trace(f"{border}\n")
+        elif level == VERBOSE_LEVEL_NUM:
+            self.verbose(f"\n{border}")
+            self.verbose(f"# {message}")
+            self.verbose(f"{border}\n")
+        elif level == logging.DEBUG:
             self.logger.debug(f"\n{border}")
             self.logger.debug(f"# {message}")
             self.logger.debug(f"{border}\n")
@@ -88,3 +104,11 @@ class LoggingUtils:
             self.logger.info(f"\n{border}")
             self.logger.info(f"# {message}")
             self.logger.info(f"{border}\n")
+
+    def verbose(self, message, *args, **kws):
+        if self.logger.isEnabledFor(VERBOSE_LEVEL_NUM):
+            self.logger._log(VERBOSE_LEVEL_NUM, message, args, **kws)
+
+    def trace(self, message, *args, **kws):
+        if self.logger.isEnabledFor(TRACE_LEVEL_NUM):
+            self.logger._log(TRACE_LEVEL_NUM, message, args, **kws)
