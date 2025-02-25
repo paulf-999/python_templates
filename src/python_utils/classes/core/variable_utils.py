@@ -12,12 +12,10 @@ import os
 import yaml
 
 # Custom modules
-from logging_utils import LoggingUtils
+from python_utils.classes.core.logging_utils import LoggingUtils
 
 logging_utils = LoggingUtils()
-logger = LoggingUtils.configure_logging
-
-logger = logging_utils.configure_logging()  # Set up logging
+logger = logging_utils.logger
 
 # Store the name of this py script as a var
 py_script_name = os.path.basename(__file__)
