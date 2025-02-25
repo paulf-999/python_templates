@@ -3,19 +3,17 @@
 Description: Provides functionality to validate command-line arguments for Azure Key Vault operations, including command and parameter checks.
 Date created: 2024-08-08
 """
+# cSpell:ignore reqd
 # flake8: noqa: E402
 
 __author__ = "Paul Fry"
 __version__ = "1.0"
 
-import sys
 import os
+import sys
 
-# Append src/py/shared/ to sys.path so that we can import its classes & functions
-shared_py_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-sys.path.append(shared_py_dir_path)
-
-from shared.classes.logging_utils import LoggingUtils
+# Custom modules
+from python_utils.classes.core.logging_utils import LoggingUtils
 
 # Initialize logging utilities
 logging_utils = LoggingUtils()  # Create an instance of LoggingUtils for logging
@@ -39,9 +37,7 @@ class InputValidator:
 
         if key_vault_command not in KEY_VAULT_COMMANDS:
             # Log error if the command is not in the list of valid commands
-            error_msg = (
-                f"Invalid command '{key_vault_command}'. " f"Valid commands are: {', '.join(KEY_VAULT_COMMANDS)}."
-            )
+            error_msg = f"Invalid command '{key_vault_command}'. Valid commands are: {', '.join(KEY_VAULT_COMMANDS)}."
             logging_utils.log_error(error_msg, PY_SCRIPT_NAME, "validate_command", "ArgumentError")
             sys.exit(1)
 

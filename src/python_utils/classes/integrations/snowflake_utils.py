@@ -3,6 +3,7 @@
 Description: Snowflake utility functions to be imported by other python scripts
 Date created: 2025-01-13
 """
+# cSpell:ignore sqlstate sfqid
 
 __author__ = "Paul Fry"
 __version__ = "1.0"
@@ -13,8 +14,10 @@ import sys
 
 import snowflake.connector
 from dotenv import load_dotenv
-from core.logging_utils import LoggingUtils
-from core.variable_utils import VariableUtils
+
+# Custom modules
+from python_utils.classes.core.logging_utils import LoggingUtils
+from python_utils.classes.core.variable_utils import VariableUtils
 
 logging_utils = LoggingUtils()  # fetch logger functions
 variable_utils = VariableUtils()  # fetch common variable util functions from variable_setup module

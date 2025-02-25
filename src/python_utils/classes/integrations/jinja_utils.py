@@ -9,32 +9,32 @@ __version__ = "1.0"
 
 import os
 import sys
-from jinja2 import Environment
-from jinja2 import FileSystemLoader
 
-from core.logging_utils import LoggingUtils
-from core.variable_utils import VariableUtils
+from jinja2 import Environment, FileSystemLoader
+
+# Custom modules
+from python_utils.classes.core.logging_utils import LoggingUtils
+from python_utils.classes.core.variable_utils import VariableUtils
 
 # fetch common variable util functions from variable_setup module
 variable_utils = VariableUtils()
+logging_utils = LoggingUtils()
+
+logger = LoggingUtils.configure_logging
 
 
 class JinjaTemplateRenderer:
-    def __init__(self):
-        # Instantiate the object properties
-        self.logger = LoggingUtils.configure_logging(self)
-
     def setup_jinja_template(self, jinja_templates_dir, ip_jinja_template_file):
         """Set up/get the Jinja template"""
 
-        self.logger.debug("Function called 'JinjaTemplateRenderer.setup_jinja_template()'")
+        logger.debug("Function called 'JinjaTemplateRenderer.setup_jinja_template()'")
 
         file_template = os.path.join(jinja_templates_dir, ip_jinja_template_file)
 
         # fmt: off
         # Validate the Jinja template
         if not os.path.exists(file_template):
-            self.logger.error(f"Error: Jinja template not found. Path to Jinja template:\n\n{file_template}.")
+            logger.error(f"Error: Jinja template not found. Path to Jinja template:\n\n{file_template}.")
             sys.exit(1)
         # fmt: on
 
@@ -44,7 +44,7 @@ class JinjaTemplateRenderer:
     def render_jinja_template(self, jinja_templates_dir, jinja_template, **kwargs):
         """Render an input jinja template"""
 
-        self.logger.debug("Function called 'JinjaTemplateRenderer.render_jinja_template()'")
+        logger.debug("Function called 'JinjaTemplateRenderer.render_jinja_template()'")
 
         # Set up the jinja template
         ip_jinja_template_file = self.setup_jinja_template(jinja_templates_dir, jinja_template)

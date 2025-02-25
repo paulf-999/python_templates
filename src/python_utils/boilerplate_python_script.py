@@ -8,8 +8,8 @@ __author__ = ""
 __version__ = "1.0"
 __date_created__ = ""
 
-import os
-import sys
+import os  # noqa
+import sys  # noqa
 import logging
 
 logging.basicConfig(format="%(message)s")
