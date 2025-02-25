@@ -15,9 +15,9 @@ import colorlog
 
 class LoggingUtils:
     def __init__(self):
-        self.logger = LoggingUtils.configure_logging(self)
+        self.logger = self.configure_logging()
 
-    def configure_logging(self, log_level=logging.INFO):
+    def configure_logging(self, log_level=logging.DEBUG):
         """Set up logging with set level & coloured formatting"""
 
         logger = logging.getLogger("application_logger")
@@ -46,24 +46,21 @@ class LoggingUtils:
     def log_error(self, message, script_name, function_name, error):
         """Log an error message along with script name, function name, and error details."""
 
-        logger = self.configure_logging()  # Set up logging
-
-        logger.debug("Function called 'LoggingUtils.log_error()'")
-
         # Get the line number where the method is called
         line_number = inspect.currentframe().f_back.f_lineno
 
         # Construct a structured error message
         error_message = (
             f"ERROR: An error occurred processing the script '{script_name}'\n"
+            f"- Script name: {script_name}\n"
             f"- Function name: {function_name}\n"
             f"- Line number: {line_number}\n"
             f"- Error details: {message}\n"
-            f"- Error: {error}"
+            f"- Exception: {error}\n"
         )
 
         # Log the error message along with the line number
-        logger.error(error_message)
+        self.logger.error(error_message)
 
     def log_header(self, message, char="-", length=77):
         """Log a formatted header with a specified character.
