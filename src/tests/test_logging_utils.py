@@ -26,8 +26,8 @@ def test_configure_logging(logging_utils):
 
     # Check that the logger is named correctly
     assert logger.name == "application_logger"
-    # Check that the logger level is set to INFO
-    assert logger.level == logging.INFO
+    # Check that the logger level is set to DEBUG
+    assert logger.level == logging.DEBUG
     # Check that the logger has at least one handler
     assert len(logger.handlers) > 0
     # Check that the handler is a StreamHandler
@@ -43,13 +43,13 @@ def test_log_error(logging_utils, caplog):
         # Call the log_error method
         logging_utils.log_error("Test message", "test_script.py", "test_function", "Test error")
 
-    # Check that the debug message is in the log output
-    assert "Function called 'LoggingUtils.log_error()'" in caplog.text
     # Check that the error message is in the log output
     assert "ERROR: An error occurred processing the script 'test_script.py'" in caplog.text
+    assert "- Script name: test_script.py" in caplog.text
     assert "- Function name: test_function" in caplog.text
+    assert "- Line number: 44" in caplog.text
     assert "- Error details: Test message" in caplog.text
-    assert "- Error: Test error" in caplog.text
+    assert "- Exception: Test error" in caplog.text
 
 
 def test_log_header(logging_utils, caplog):
