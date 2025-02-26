@@ -18,9 +18,10 @@ from python_utils.classes.core.variable_utils import VariableUtils
 
 # fetch common variable util functions from variable_setup module
 variable_utils = VariableUtils()
-logging_utils = LoggingUtils()
 
-logger = LoggingUtils.configure_logging
+# Set up logging using custom shared module
+logging_utils = LoggingUtils()
+logger = logging_utils.logger
 
 
 class JinjaTemplateRenderer:

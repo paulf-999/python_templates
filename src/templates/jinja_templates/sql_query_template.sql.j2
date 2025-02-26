@@ -1,0 +1,6 @@
+SELECT
+    {{ columns | join(', ') }}
+FROM
+    {{ table_name }}
+WHERE
+    {{ condition }};
