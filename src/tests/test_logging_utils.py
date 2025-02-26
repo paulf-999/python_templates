@@ -72,7 +72,7 @@ def test_log_error(logging_utils, caplog):
 
 def test_log_header(logging_utils, caplog):
     """Test the log_header method to ensure it logs headers correctly."""
-    with caplog.at_level(logging.INFO):
+    with caplog.at_level(VERBOSE):
         # Call the log_header method
         logging_utils.log_header("Test Header")
 
