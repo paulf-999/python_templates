@@ -58,7 +58,7 @@ def test_log_error(logging_utils, caplog):
             logging_utils.log_error("Test message", "test_script.py", "test_function", str(e))
 
     # Check that the error message is in the log output
-    assert "ERROR: An error occurred processing the script 'test_script.py'" in caplog.text
+    assert "ERROR: An error occurred in 'test_script.py'" in caplog.text
     assert "- Script name: test_script.py" in caplog.text
     assert "- Function name: test_function" in caplog.text
     assert "- Error details: Test message" in caplog.text
