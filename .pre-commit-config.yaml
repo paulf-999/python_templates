@@ -68,9 +68,6 @@ repos:
       hooks:
           - id: check-ast # checks whether files parse as valid python.
             name: Python checks - check Python Syntax
-          - id: name-tests-test # verifies Python test files are named correctly - i.e., ensure py tests match /test*.py
-            args: [--pytest-test-first]
-            name: Python checks - ensure standard naming for Pytest tests
     # Python - additional checks
     # - repo: https://github.com/pre-commit/mirrors-mypy
     #   rev: v0.910
@@ -81,7 +78,7 @@ repos:
       rev: 1.8.3
       hooks:
           - id: bandit # Perform security checks with bandit
-            name: Python checks - security checks with bandit
+            name: Python checks - Bandit - security checks
             args: [--severity, medium]
     - repo: local
       hooks:
@@ -91,7 +88,12 @@ repos:
             language: system
             pass_filenames: false
             always_run: true
-
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.4.0
+      hooks:
+          - id: name-tests-test # verifies Python test files are named correctly - i.e., ensure py tests match /test*.py
+            args: [--pytest-test-first]
+            name: Python checks - pytest - ensure standard naming for Pytest tests
     # General/housekeeping hooks
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v4.4.0
