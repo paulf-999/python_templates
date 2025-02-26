@@ -19,13 +19,16 @@ def variable_utils():
     return VariableUtils()
 
 
-def test_validate_env_vars(variable_utils, caplog):
+def test_validate_env_vars(variable_utils, caplog, REQUIRED_ENV_VARS=None):
     """Test the validate_env_vars method."""
-    required_env_vars = ["HOME", "USER", "SHELL", "NON_EXISTENT_VAR"]
-    variable_utils.validate_env_vars(required_env_vars)
+    if REQUIRED_ENV_VARS is None:
+        REQUIRED_ENV_VARS = ["HOME", "USER", "SHELL", "NON_EXISTENT_VAR"]
+    variable_utils.validate_env_vars(REQUIRED_ENV_VARS)
 
     assert "Error: The following environment variables are missing:" in caplog.text
-    assert "NON_EXISTENT_VAR" in caplog.text
+    for var in REQUIRED_ENV_VARS:
+        if var not in os.environ:
+            assert var in caplog.text
 
 
 def test_load_ip_params_from_config(variable_utils, tmp_path, caplog):
