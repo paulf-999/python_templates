@@ -18,9 +18,10 @@ from python_utils.classes.core.variable_utils import VariableUtils
 
 # fetch common variable util functions from variable_setup module
 variable_utils = VariableUtils()
-logging_utils = LoggingUtils()
 
-logger = LoggingUtils.configure_logging
+# Set up logging using custom shared module
+logging_utils = LoggingUtils()
+logger = logging_utils.logger
 
 
 class JinjaTemplateRenderer:
@@ -34,7 +35,7 @@ class JinjaTemplateRenderer:
         # fmt: off
         # Validate the Jinja template
         if not os.path.exists(file_template):
-            logger.error(f"Error: Jinja template not found. Path to Jinja template:\n\n{file_template}.")
+            logger.error(f"Error: Jinja template not found. Path to Jinja template: {file_template}.")
             sys.exit(1)
         # fmt: on
 

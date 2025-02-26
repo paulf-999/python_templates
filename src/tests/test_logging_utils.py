@@ -10,7 +10,7 @@ __version__ = "1.0"
 import logging
 
 import pytest
-from python_utils.classes.core.logging_utils import TRACE_LEVEL_NUM, VERBOSE_LEVEL_NUM, LoggingUtils
+from python_utils.classes.core.logging_utils import TRACE, VERBOSE, LoggingUtils
 
 
 @pytest.fixture
@@ -84,9 +84,9 @@ def test_log_header(logging_utils, caplog):
 
 def test_log_verbose(logging_utils, caplog):
     """Test logging with VERBOSE level."""
-    logging_utils.set_log_level(VERBOSE_LEVEL_NUM)
+    logging_utils.set_log_level(VERBOSE)
 
-    with caplog.at_level(VERBOSE_LEVEL_NUM):
+    with caplog.at_level(VERBOSE):
         logging_utils.verbose("This is a VERBOSE level message")
 
     assert "This is a VERBOSE level message" in caplog.text
@@ -94,9 +94,9 @@ def test_log_verbose(logging_utils, caplog):
 
 def test_log_trace(logging_utils, caplog):
     """Test logging with TRACE level."""
-    logging_utils.set_log_level(TRACE_LEVEL_NUM)
+    logging_utils.set_log_level(TRACE)
 
-    with caplog.at_level(TRACE_LEVEL_NUM):
+    with caplog.at_level(TRACE):
         logging_utils.trace("This is a TRACE level message")
 
     assert "This is a TRACE level message" in caplog.text

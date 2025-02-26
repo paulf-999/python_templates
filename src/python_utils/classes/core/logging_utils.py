@@ -13,10 +13,10 @@ import logging
 import colorlog
 
 # Define two new logging levels VERBOSE and TRACE
-VERBOSE_LEVEL_NUM = 15
-TRACE_LEVEL_NUM = 5
-logging.addLevelName(VERBOSE_LEVEL_NUM, "VERBOSE")
-logging.addLevelName(TRACE_LEVEL_NUM, "TRACE")
+VERBOSE = 15
+TRACE = 11
+logging.addLevelName(VERBOSE, "VERBOSE")
+logging.addLevelName(TRACE, "TRACE")
 
 
 class LoggingUtils:
@@ -87,8 +87,11 @@ class LoggingUtils:
         # Log the error message along with the line number
         self.logger.error(error_message)
 
-    def log_header(self, message, level=logging.INFO):
+    def log_header(self, message, level=VERBOSE):
         """Not functional: generate a consistent logging header message"""
+
+        # enable the headings to use a different colour
+        self.set_log_level(level)
 
         border = "-" * 77  # Create a consistent border for the header
         log_method = self._get_log_method(level)  # Get the appropriate log method
@@ -103,17 +106,17 @@ class LoggingUtils:
             return self.logger.info
         elif level == logging.DEBUG:
             return self.logger.debug
-        elif level == TRACE_LEVEL_NUM:
+        elif level == TRACE:
             return self.trace
-        elif level == VERBOSE_LEVEL_NUM:
+        elif level == VERBOSE:
             return self.verbose
         else:
             return self.logger.info
 
     def verbose(self, message, *args, **kws):
-        if self.logger.isEnabledFor(VERBOSE_LEVEL_NUM):
-            self.logger._log(VERBOSE_LEVEL_NUM, message, args, **kws)
+        if self.logger.isEnabledFor(VERBOSE):
+            self.logger._log(VERBOSE, message, args, **kws)
 
     def trace(self, message, *args, **kws):
-        if self.logger.isEnabledFor(TRACE_LEVEL_NUM):
-            self.logger._log(TRACE_LEVEL_NUM, message, args, **kws)
+        if self.logger.isEnabledFor(TRACE):
+            self.logger._log(TRACE, message, args, **kws)
