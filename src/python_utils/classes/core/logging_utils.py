@@ -14,7 +14,7 @@ import colorlog
 
 # Define two new logging levels VERBOSE and TRACE
 VERBOSE = 15
-TRACE = 11
+TRACE = 5
 logging.addLevelName(VERBOSE, "VERBOSE")
 logging.addLevelName(TRACE, "TRACE")
 

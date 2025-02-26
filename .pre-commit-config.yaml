@@ -61,16 +61,39 @@ repos:
       hooks:
           - id: flake8 # enforces flake8 style consistency across Python files.
             language_version: python3
-            args: [--max-line-length=150, --max-complexity=10]
+            args: [--max-line-length=120, --max-complexity=10]
             name: Python checks - lint Python code with Flake8
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v4.4.0
       hooks:
           - id: check-ast # checks whether files parse as valid python.
             name: Python checks - check Python Syntax
+    # Python - additional checks
+    # - repo: https://github.com/pre-commit/mirrors-mypy
+    #   rev: v0.910
+    #   hooks:
+    #       - id: mypy # Perform static type checking with mypy
+    #         name: Python checks - static type checking with mypy
+    - repo: local
+      hooks:
+          - id: pytest-check
+            name: Python checks - pytest
+            entry: pytest
+            language: system
+            pass_filenames: false
+            always_run: true
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.4.0
+      hooks:
           - id: name-tests-test # verifies Python test files are named correctly - i.e., ensure py tests match /test*.py
             args: [--pytest-test-first]
-            name: Python checks - ensure standard naming for Pytest tests
+            name: Python checks - pytest - ensure standard Pytest naming
+    - repo: https://github.com/pycqa/bandit
+      rev: 1.8.3
+      hooks:
+          - id: bandit # Perform security checks with bandit
+            name: Python checks - Bandit - security checks
+            args: [--severity, medium]
     # General/housekeeping hooks
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v4.4.0
