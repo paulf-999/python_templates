@@ -11,7 +11,7 @@ import os
 from unittest.mock import MagicMock, patch
 
 import pytest
-from python_utils.classes.core.variable_utils import VariableUtils  # Import VariableUtils
+from python_utils.classes.core.variable_utils import VariableUtils
 from python_utils.classes.integrations.jinja_utils import JinjaTemplateRenderer
 
 

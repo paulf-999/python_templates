@@ -35,7 +35,7 @@ class JinjaTemplateRenderer:
         # fmt: off
         # Validate the Jinja template
         if not os.path.exists(file_template):
-            logger.error(f"Error: Jinja template not found. Path to Jinja template:\n\n{file_template}.")
+            logger.error(f"Error: Jinja template not found. Path to Jinja template: {file_template}.")
             sys.exit(1)
         # fmt: on
 

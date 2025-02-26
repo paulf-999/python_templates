@@ -9,7 +9,7 @@ __version__ = "1.0"
 
 import logging
 
-from python_utils.classes.core.logging_utils import TRACE_LEVEL_NUM, VERBOSE_LEVEL_NUM, LoggingUtils
+from python_utils.classes.core.logging_utils import TRACE, VERBOSE, LoggingUtils
 
 
 def log_info_message(logging_utils):
@@ -30,16 +30,16 @@ def log_debug_message(logging_utils):
 
 def log_verbose_message(logging_utils):
     """Log a message with VERBOSE level."""
-    logging_utils.set_log_level(VERBOSE_LEVEL_NUM)
+    logging_utils.set_log_level(VERBOSE)
     logging_utils.verbose("This is a VERBOSE level message")
-    logging_utils.log_header("Example Header with VERBOSE level", level=VERBOSE_LEVEL_NUM)
+    logging_utils.log_header("Example Header with VERBOSE level", level=VERBOSE)
 
 
 def log_trace_message(logging_utils):
     """Log a message with TRACE level."""
-    logging_utils.set_log_level(TRACE_LEVEL_NUM)
+    logging_utils.set_log_level(TRACE)
     logging_utils.trace("This is a TRACE level message")
-    logging_utils.log_header("Example Header with TRACE level", level=TRACE_LEVEL_NUM)
+    logging_utils.log_header("Example Header with TRACE level", level=TRACE)
 
 
 def log_error_message(logging_utils):
