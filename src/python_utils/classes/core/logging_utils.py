@@ -12,7 +12,7 @@ import logging
 
 import colorlog
 
-# Define new log levels VERBOSE and TRACE
+# Define two new logging levels VERBOSE and TRACE
 VERBOSE_LEVEL_NUM = 15
 TRACE_LEVEL_NUM = 5
 logging.addLevelName(VERBOSE_LEVEL_NUM, "VERBOSE")
@@ -25,36 +25,46 @@ class LoggingUtils:
         self.set_log_level(logging.INFO)  # Set default log level to INFO
 
     def configure_logging(self):
-        """Set up logging with set level & coloured formatting"""
+        """Set up logging with coloured formatting"""
 
         logger = logging.getLogger("application_logger")
 
-        # Prevent adding duplicate handlers
+        # Add coloured formatting to the logger - if the handler is not already set
         if not logger.handlers:
-            handler = colorlog.StreamHandler()
-            # add colour formatting to the logger
-            handler.setFormatter(
-                colorlog.ColoredFormatter(
-                    "%(log_color)s%(message)s",
-                    log_colors={
-                        "TRACE": "blue",
-                        "VERBOSE": "purple",
-                        "DEBUG": "green",
-                        "INFO": "cyan",
-                        "WARNING": "yellow",
-                        "ERROR": "red",
-                        "CRITICAL": "bold_red",
-                    },
-                )
-            )
-            logger.addHandler(handler)
+            self._add_colored_handler(logger)
 
         return logger
+
+    def _add_colored_handler(self, logger):
+        """Add a colored handler to the logger."""
+
+        # Required to apply colour formatting to the logger
+        handler = colorlog.StreamHandler()
+
+        # Add colour formatting to the logger
+        handler.setFormatter(
+            colorlog.ColoredFormatter(
+                "%(log_color)s%(message)s",
+                log_colors={
+                    "TRACE": "blue",
+                    "VERBOSE": "purple",
+                    "DEBUG": "green",
+                    "INFO": "cyan",
+                    "WARNING": "yellow",
+                    "ERROR": "red",
+                    "CRITICAL": "bold_red",
+                },
+            )
+        )
+        logger.addHandler(handler)
 
     def set_log_level(self, log_level=logging.INFO):
         """Set the log level for the logger and its handlers"""
 
+        # Set the log level
         self.logger.setLevel(log_level)
+
+        # Set the log level for each handler
         for handler in self.logger.handlers:
             handler.setLevel(log_level)
 
@@ -66,7 +76,7 @@ class LoggingUtils:
 
         # Construct a structured error message
         error_message = (
-            f"ERROR: An error occurred processing the script '{script_name}'\n"
+            f"ERROR: An error occurred in '{script_name}'\n"
             f"- Script name: {script_name}\n"
             f"- Function name: {function_name}\n"
             f"- Line number: {line_number}\n"
@@ -77,33 +87,28 @@ class LoggingUtils:
         # Log the error message along with the line number
         self.logger.error(error_message)
 
-    def log_header(self, message, char="-", length=77, level=logging.INFO):
-        """Log a formatted header with a specified character.
+    def log_header(self, message, level=logging.INFO):
+        """Not functional: generate a consistent logging header message"""
 
-        Args:
-            message (str): The header message to log.
-            char (str): The character to use for the border.
-            length (int): The length of the border.
-            level (int): The logging level to use for the header.
-        """
+        border = "-" * 77  # Create a consistent border for the header
+        log_method = self._get_log_method(level)  # Get the appropriate log method
+        log_method(f"\n{border}")
+        log_method(f"# {message}")  # Log the message
+        log_method(f"{border}\n")
 
-        border = char * length
-        if level == TRACE_LEVEL_NUM:
-            self.trace(f"\n{border}")
-            self.trace(f"# {message}")
-            self.trace(f"{border}\n")
-        elif level == VERBOSE_LEVEL_NUM:
-            self.verbose(f"\n{border}")
-            self.verbose(f"# {message}")
-            self.verbose(f"{border}\n")
+    def _get_log_method(self, level):
+        """Get the appropriate log method based on the log level."""
+
+        if level == logging.INFO:
+            return self.logger.info
         elif level == logging.DEBUG:
-            self.logger.debug(f"\n{border}")
-            self.logger.debug(f"# {message}")
-            self.logger.debug(f"{border}\n")
+            return self.logger.debug
+        elif level == TRACE_LEVEL_NUM:
+            return self.trace
+        elif level == VERBOSE_LEVEL_NUM:
+            return self.verbose
         else:
-            self.logger.info(f"\n{border}")
-            self.logger.info(f"# {message}")
-            self.logger.info(f"{border}\n")
+            return self.logger.info
 
     def verbose(self, message, *args, **kws):
         if self.logger.isEnabledFor(VERBOSE_LEVEL_NUM):
