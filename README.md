@@ -1,52 +1,13 @@
 # Python Utilities Project
 
-Reusable Python utilities for **core functionality** and **integrations** (Snowflake, Azure Key Vault, Jinja, logging, variables). Includes examples, documentation, and tests to support consistent development.
-
----
-
-## Contents
-
-1. Summary
-2. Getting Started
-
-   * Prerequisites
-   * Installation
-   * How-to Run
-3. Git Branching Strategy
-4. Help
-5. Folder Contents
-
----
-
-## 1. Summary
-
 This project provides a structured set of **Python utilities and templates** to accelerate development.
 It covers core utilities, integrations, examples, and coding standards.
-
-### Technologies Used
-
-* Python 3
-* Pytest
-* Azure Key Vault
-* Snowflake
-* Jinja2
 
 ---
 
 ## 2. Getting Started
 
-### Prerequisites
-
-* Python 3.8+ and pip
-* Git
-
 ### Installation
-
-```bash
-git clone https://github.com/yourusername/python_templates.git
-cd python_templates
-pip install -r requirements.txt
-```
 
 Set `PYTHONPATH`:
 
