@@ -36,10 +36,8 @@ class VariableUtils:
 
     def load_ip_params_from_config(self, config_file_path):
         """Load variables from a config.yaml into ip_params dictionary.
-        Args:
-            config_file_path (str): The path to the config.yaml file.
-        Returns:
-            ip_params: A dictionary containing the parameters loaded from the config.yaml file.
+        Args: config_file_path (str): The path to the config.yaml file.
+        Returns: ip_params: A dictionary containing the parameters loaded from the config.yaml file.
         """
 
         logger.debug("Function called 'VariableUtils.load_ip_params_from_config()'")
