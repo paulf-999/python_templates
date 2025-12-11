@@ -8,7 +8,6 @@ __author__ = "Paul Fry"
 __version__ = "1.0"
 
 import os
-
 import yaml
 
 # Custom modules
@@ -24,6 +23,8 @@ py_script_name = os.path.basename(__file__)
 class VariableUtils:
     def validate_env_vars(self, REQUIRED_ENV_VARS):
         """Verify whether the required environment variables exist."""
+
+        logger.debug("Function called 'VariableUtils.validate_env_vars()'")
 
         # Check if any required environment variables are missing or empty
         missing_or_empty_env_vars = [var for var in REQUIRED_ENV_VARS if not os.getenv(var)]
