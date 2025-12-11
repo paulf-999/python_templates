@@ -14,10 +14,6 @@ from jinja2 import Environment, FileSystemLoader
 
 # Custom modules
 from python_utils.classes.core.logging_utils import LoggingUtils
-from python_utils.classes.core.variable_utils import VariableUtils
-
-# fetch common variable util functions from variable_setup module
-variable_utils = VariableUtils()
 
 # Set up logging using custom shared module
 logging_utils = LoggingUtils()
