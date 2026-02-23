@@ -1,3 +1,6 @@
+# AI / LLM libraries
+openai==2.21.0
+
 # This list has been compiled using the following:
 
 # '20 most popular python packages' | medium.com. Link: https://medium.com/@kasperjuunge/20-most-downloaded-python-packages-explained-f5cded2eb70d
